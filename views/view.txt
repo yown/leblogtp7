@@ -1,0 +1,2 @@
+LEs views sous le nom du fichier action: par exemple, la page par defaut sera home.php, pour ?action=article 
+on aura article.php
