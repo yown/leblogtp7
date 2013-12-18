@@ -16,6 +16,6 @@
  
  // okay appelons la vue
  callView('header', $unTableau); // je charge la page header aec tel variable
- callView('home'  , $unAutreTableau); // sera sous la forme $data['case du tableau genre non ou helloMotherFuckingWorld']
+ callView('home'  , $unAutreTableau); // sera sous la forme $non ou $helloMotherFuckingWorld, elle sont reinterpretées
 
 ?>
