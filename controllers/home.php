@@ -15,7 +15,6 @@
  // mais si tu sais pas si ça doit aller dans le modele ou controlleur : ça peut aller dans la lib 
  
  // okay appelons la vue
- callView('header', $unTableau); // je charge la page header aec tel variable
  callView('home'  , $unAutreTableau); // sera sous la forme $non ou $helloMotherFuckingWorld, elle sont reinterpretées
 
 ?>

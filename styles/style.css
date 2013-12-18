@@ -1,0 +1,205 @@
+body
+{
+	padding: 0;
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	background: #f0f0f0;
+}
+
+.content
+{
+	width: 1024px;
+	margin: auto;
+}
+/* 
+font-family: 'Open Sans', sans-serif;
+font-family: 'Open Sans Condensed', sans-serif;
+*/
+
+a, a:visited
+{
+	color: #2c3e50;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color:#95a5a6;
+}
+/* ----------------------------------------- 
+					HEADER
+------------------------------------------ */
+#header
+{
+	width: 100%;
+	height: 50px;
+	background: #2c3e50;
+	padding: 5px;
+	color: #FFFFFF;
+	margin-bottom: 30px;
+}
+
+/* logo */
+#header #logo
+{
+	float: left;
+	margin: 0;
+	line-height: 50px;
+}
+
+#header #logo span
+{
+	display: inline-block;
+	float: right;
+	margin-left: 10px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+}
+
+/* UL */
+#header #categories_header
+{
+	float: left;
+}
+
+#header #connexion_inscription
+{
+	float: right;
+}
+
+#header #categories_header li, #header #connexion_inscription li
+{
+	display: inline;
+	margin-left: 30px;
+}
+
+#header #connexion_inscription li .icon-arrow-down
+{
+	position: relative;
+	top: 2px;
+}
+
+/* liens */
+#header a, #header a:visited
+{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#header a:hover
+{
+	color: #ecf0f1;
+}
+
+
+/* ----------------------------------------- 
+			MENU GAUCHE
+------------------------------------------ */
+#menu_gauche
+{
+	width: 320px;
+	background: #ecf0f1;
+	float: left;
+}
+
+#menu_gauche h1
+{
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+	background: #FFFFFF;
+	padding: 5px 0 5px 0;
+	color: #2c3e50;
+	border-radius: 5px 5px 0 0;
+	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+/* ---- Apercus des articles ---- */
+.apercus_article_menu_gauche
+{	
+	height: 70px;
+	border-bottom: 1px solid #bdc3c7;
+	padding: 2px 0 2px 0;
+}
+
+.apercus_article_menu_gauche:hover
+{
+	background: #f2f4f4;
+}
+
+.apercus_article_menu_gauche:last-child
+{
+	border-bottom: none;
+}
+
+.apercus_article_menu_gauche img
+{
+	float: left;
+}
+
+.apercus_article_menu_gauche .apercus_titre
+{
+	width: 240px;
+	float: left;
+	margin: 0;
+	padding-left: 10px;
+}
+
+.apercus_comments
+{
+	float: left;
+	margin-left: 10px;
+}
+
+.apercus_auteur
+{
+	float: right;
+	margin-right: 10px;
+}
+
+
+/* ----------------------------------------- 
+			CONTENT ARTICLES
+------------------------------------------ */
+#content_articles
+{
+	width: 650px;
+	background: red;
+	float: right;
+	margin-top: 20px;
+}
+
+
+/* -----------------
+	  ARTICLES
+------------------ */
+.article
+{
+	width: 100%;
+	background: green;
+}
+
+/* image de l'article */
+.article .bloc_image_article
+{
+	width: 100%;
+	height: 200px;
+	background: yellow;
+	overflow: hidden;
+}
+
+/* bloc contenant le resume, les comments ... */
+.article .apercus_infos_article
+{
+	width: 90%;
+	margin: auto;
+}
+
+/* Auteur, Date */
+.article .bloc_infos_article
+{
+	float: right;
+	background: red;
+}
+
