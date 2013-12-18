@@ -63,6 +63,6 @@
 	if(controllerExist($controllerName))
 		Loader($controllerName);
 	else
-		Loader(DEFAULTCONTROLLER);
+		show404();
 
 ?>

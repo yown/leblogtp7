@@ -34,11 +34,17 @@ function Loader($name)
 	require_once('controllers/'.$name.'.php');
 }
 
-function callView($name, $data)
+function callView($name, $data = null)
 {
 	if(!file_exists('views/'.$name.'.php'))
 		exit('View '.$name.' Can\'t be loaded in fonctions.php::callView');
 	require('views/'.$name.'.php');
+}
+
+function show404()
+{
+	callView('404');
+	exit;
 }
 
 
