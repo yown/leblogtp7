@@ -20,7 +20,7 @@
 	<!-- header -->
 	<header id="header">
 		<div class="content">
-			<p id="logo" class="left"><a href="#"><img src="images/logo.png" alt="Black Wave"> <span class="right">Black Wave</span></a></p>
+			<p id="logo" class="left"><a href="#"><img src="images/logo.png" alt="Black Wave"> <span>Black Wave</span></a></p>
 			<ul id="categories_header" class="left">
 				<li>Categorie 1</li>
 				<li>Categorie 2</li>
