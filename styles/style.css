@@ -340,3 +340,17 @@ hr
 /* -------------------------------------------------------
 					PAGE INSCRIPTION
 -------------------------------------------------------- */
+#inscription
+{
+	width: 400px;
+	margin: auto;
+	background: #fcfbfb;
+	text-align: center;
+	padding: 5px;
+}
+
+#inscription input[type=text], #inscription input[type=password]
+{
+	width: 350px;
+	padding: 5px;
+}

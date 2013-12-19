@@ -21,7 +21,7 @@
 	<!-- header -->
 	<header id="header">
 		<div class="content">
-			<p id="logo" class="left"><a href="#"><img src="images/logo.png" alt="Black Wave"> <span>Black Wave</span></a></p>
+			<p id="logo" class="left"><a href="index.php"><img src="images/logo.png" alt="Black Wave"> <span>Black Wave</span></a></p>
 			<ul id="categories_header" class="left">
 				<li>Categorie 1</li>
 				<li>Categorie 2</li>
@@ -32,7 +32,7 @@
 			<?php
 				if(empty($pseudo))
 					echo '
-						<li><a href="#">Inscription</a></li>
+						<li><a href="index.php?action=inscription">Inscription</a></li>
 						<li id="lien_connexion">
 							<a href="#">Connexion<span class="icon-arrow-down"></span></a>
 							<ul id="bloc_connexion">

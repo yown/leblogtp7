@@ -4,4 +4,7 @@
  callView('header', $infosHeader);
  callView('inscription'); // sera sous la forme $non ou $helloMotherFuckingWorld, elle sont reinterpretées
 
+
+if(isset($_POST))
+	isValid($_POST);
 ?>
