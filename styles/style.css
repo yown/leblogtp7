@@ -6,15 +6,20 @@ body
 	background: #f0f0f0;
 }
 
+/* ----------------------------------------- 
+				GENERAL
+------------------------------------------ */
 .content
 {
 	width: 1024px;
 	margin: auto;
 }
+
 /* 
 font-family: 'Open Sans', sans-serif;
 font-family: 'Open Sans Condensed', sans-serif;
 */
+
 
 a, a:visited
 {
@@ -26,6 +31,16 @@ a:hover
 {
 	color:#95a5a6;
 }
+
+.right
+{
+	float: right;
+}
+
+.left
+{
+	float: left;
+}
 /* ----------------------------------------- 
 					HEADER
 ------------------------------------------ */
@@ -34,7 +49,7 @@ a:hover
 	width: 100%;
 	height: 50px;
 	background: #2c3e50;
-	padding: 5px;
+	padding: 5px 0 5px 0;
 	color: #FFFFFF;
 	margin-bottom: 30px;
 }
@@ -42,7 +57,6 @@ a:hover
 /* logo */
 #header #logo
 {
-	float: left;
 	margin: 0;
 	line-height: 50px;
 }
@@ -50,7 +64,6 @@ a:hover
 #header #logo span
 {
 	display: inline-block;
-	float: right;
 	margin-left: 10px;
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-weight: bold;
@@ -58,16 +71,6 @@ a:hover
 }
 
 /* UL */
-#header #categories_header
-{
-	float: left;
-}
-
-#header #connexion_inscription
-{
-	float: right;
-}
-
 #header #categories_header li, #header #connexion_inscription li
 {
 	display: inline;
@@ -78,6 +81,34 @@ a:hover
 {
 	position: relative;
 	top: 2px;
+}
+
+/* bloc connexion */
+#header #connexion_inscription #lien_connexion
+{
+	position: relative;
+}
+
+#bloc_connexion
+{
+	display: none;
+	width: 200px;
+	background: #2c3e50;
+	color: #FFFFFF;
+	padding: 0;
+	text-align: center;
+	position: absolute;
+	right: 0;
+}
+
+#bloc_connexion input
+{
+	margin: 0;
+}
+
+#header #connexion_inscription #lien_connexion:hover #bloc_connexion
+{
+	display: block;
 }
 
 /* liens */
@@ -99,8 +130,6 @@ a:hover
 #menu_gauche
 {
 	width: 320px;
-	background: #ecf0f1;
-	float: left;
 }
 
 #menu_gauche h1
@@ -108,11 +137,15 @@ a:hover
 	display: inline-block;
 	width: 100%;
 	margin: 0;
-	background: #FFFFFF;
 	padding: 5px 0 5px 0;
 	color: #2c3e50;
 	border-radius: 5px 5px 0 0;
 	font-family: 'Open Sans Condensed', sans-serif;
+}
+
+#content_menu_gauche
+{
+	background: #fcfbfb;
 }
 
 /* ---- Apercus des articles ---- */
@@ -120,12 +153,13 @@ a:hover
 {	
 	height: 70px;
 	border-bottom: 1px solid #bdc3c7;
-	padding: 2px 0 2px 0;
+	padding: 2px 0 3px 0;
+	margin-bottom: 1px;
 }
 
 .apercus_article_menu_gauche:hover
 {
-	background: #f2f4f4;
+	background: #FFFFFF;
 }
 
 .apercus_article_menu_gauche:last-child
@@ -133,10 +167,19 @@ a:hover
 	border-bottom: none;
 }
 
-.apercus_article_menu_gauche img
+/* image apercus */
+.apercus_article_menu_gauche .image_apercus
 {
-	float: left;
+	width: 70px;
+	height:70px;
+	overflow: hidden;
 }
+
+.apercus_article_menu_gauche .image_apercus img
+{
+	width: 100%;
+}
+
 
 .apercus_article_menu_gauche .apercus_titre
 {
@@ -148,13 +191,11 @@ a:hover
 
 .apercus_comments
 {
-	float: left;
 	margin-left: 10px;
 }
 
 .apercus_auteur
 {
-	float: right;
 	margin-right: 10px;
 }
 
@@ -165,9 +206,7 @@ a:hover
 #content_articles
 {
 	width: 650px;
-	background: red;
-	float: right;
-	margin-top: 20px;
+	margin: 20px 0 30px 0;
 }
 
 
@@ -177,7 +216,8 @@ a:hover
 .article
 {
 	width: 100%;
-	background: green;
+	background: #fcfbfb;
+	border-bottom: 3px solid #2c3e50;
 }
 
 /* image de l'article */
@@ -185,7 +225,6 @@ a:hover
 {
 	width: 100%;
 	height: 200px;
-	background: yellow;
 	overflow: hidden;
 }
 
@@ -196,10 +235,34 @@ a:hover
 	margin: auto;
 }
 
-/* Auteur, Date */
-.article .bloc_infos_article
+.article h1
 {
-	float: right;
-	background: red;
+	display: inline-block;
 }
 
+hr 
+{ 
+	background-color: #bdc3c7; 
+	height: 1px; 
+	border: 0; 
+}
+
+/* bouton pour editer le commentaire */
+.edit_commentaire
+{
+	position: relative;
+	left: 240px;
+}
+/* -----------------
+	Comm Articles
+------------------ */
+.commentaire
+{
+	font-size: 13px;
+	margin-bottom: 20px;
+}
+
+.comentaire .infos_commentaire
+{
+	color: #bdc3c7;
+}
