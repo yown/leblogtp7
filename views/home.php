@@ -55,9 +55,25 @@
 			</nav>
 		</div>
 	</header>
-	
+	<!-- infobules -->
+	<div class="infobulle valide">
+		<p>
+			Vous êtes maintenant connecté ! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span
+		</p>
+	</div>
+	<div class="infobulle erreur">
+		<p>
+			Une erreur est surveneue ! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
+		</p>
+	</div>
+	<div class="infobulle information">
+		<p>
+			Petite informatiooooonnn !!!! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
+		</p>
+	</div>
+
 	<!-- Menu avec les 5 derniers articles -->
-	<div class="content">
+	<div class="content marge-top">
 		<section id="menu_gauche" class="left">
 			<h1>Derniers articles</h1>
 			<div id="content_menu_gauche">

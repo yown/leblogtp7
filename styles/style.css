@@ -4,6 +4,7 @@ body
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
 	background: #f0f0f0;
+	min-width: 1024px;
 }
 
 /* ----------------------------------------- 
@@ -13,6 +14,11 @@ body
 {
 	width: 1024px;
 	margin: auto;
+}
+
+.marge-top
+{
+	margin-top: 30px;
 }
 
 /* 
@@ -41,6 +47,53 @@ a:hover
 {
 	float: left;
 }
+
+/* ------- infobulles --------- */
+.infobulle
+{
+	padding:5px 0 5px 0;
+	width: 100%;
+	height: 30px;
+	text-align: center;
+}
+
+.infobulle p 
+{
+	line-height: 0;
+	color: #FFFFFF;
+}
+
+.infobulle a:hover
+{
+	color: #2c3e50;
+}
+
+.infobulle a, .infobulle a:visited 
+{
+	color: #FFFFFF;
+}
+
+.croix_infobule
+{
+	position: relative;
+	bottom: 7px;
+	margin-right: 20px;
+}
+
+.valide
+{
+	background: #2ecc71;
+}
+
+.erreur
+{
+	background: #e74c3c;
+}
+
+.information
+{
+	background: #3498db;
+}
 /* ----------------------------------------- 
 					HEADER
 ------------------------------------------ */
@@ -51,7 +104,7 @@ a:hover
 	background: #2c3e50;
 	padding: 5px 0 5px 0;
 	color: #FFFFFF;
-	margin-bottom: 30px;
+
 }
 
 /* logo */
@@ -130,6 +183,7 @@ a:hover
 #menu_gauche
 {
 	width: 320px;
+	margin: 0;
 }
 
 #menu_gauche h1
@@ -258,8 +312,9 @@ hr
 ------------------ */
 .commentaire
 {
-	font-size: 13px;
+	font-size: 14px;
 	margin-bottom: 20px;
+	color: #7f8c8d;
 }
 
 .comentaire .infos_commentaire
