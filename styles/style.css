@@ -35,7 +35,7 @@ a, a:visited
 
 a:hover
 {
-	color:#95a5a6;
+	color:rgb(41, 42, 47);
 }
 
 .right
@@ -104,7 +104,10 @@ a:hover
 	background: #2c3e50;
 	padding: 5px 0 5px 0;
 	color: #FFFFFF;
-
+}
+#headere a:hover
+{
+	color:#95a5a6;
 }
 
 /* logo */
