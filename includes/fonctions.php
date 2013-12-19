@@ -51,7 +51,22 @@ function protectSQL($link, $value, $type = NULL)
 
 //---------------
 
-
+function toDate($time)
+{
+	$currentTime = time();
+	$time = strtotime($time);
+	
+	if($currentTime-$time > 277840) // si plusde 3 jours
+		return date("d/m à H:i", $time);
+	elseif($currentTime-$time > 86400)
+		return (int)(($currentTime-$time)/60/60/24).' jour(s)';
+	elseif($currentTime-$time > 3600)
+		return (int)(($currentTime-$time)/60/60).' heure(s)';
+	elseif($currentTime-$time > 60)
+		return (int)(($currentTime-$time)/60).' minutes';
+	else
+		return '1 minute';
+}
 
 
 ?>

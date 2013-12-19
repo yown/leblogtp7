@@ -15,18 +15,18 @@
 		0 => array(
 			'image'    => 'http://lorempixel.com/650/300/',
 			'author'   => 'loremPixel',
-			'date'     => 'il y a 10 heures',
+			'date'     => toDate("2013-12-23 17:16:18"),
 			'title'    => 'Un générateur d\'image :)',
 			'content'  => 'Nous voyons à ce jour apparaitre un MotherFucking générateur super extra cool : j\'ai nommé LoremPixel. Il génère Automatiquement et aléatoirement des images de la taille de votre choix. Très pratique pour par exemple illustrer un blog en construction comme l\'incroyable BlackWave qui [...]',
 			'comments' => array(
 				0 => array(
 					'author'  => 'Amazing',
-					'date'    => 'il y a 2 secondes',
+					'date'    => toDate("2013-12-27 19:16:18"),
 					'content' => 'That fucking awsome Man, i want this so hard !'
 				),
 				1 => array(
 					'author'  => 'notbadguy',
-					'date'    => 'il y a 12 minutes',
+					'date'    => toDate("2013-12-29 17:39:18"),
 					'content' => 'ça c\'est plutot sympa ;)'
 				)
 			)
@@ -34,18 +34,18 @@
 		1 => array(
 			'image'    => 'http://placekitten.com/650/200',
 			'author'   => 'KittyFanBoy',
-			'date'     => 'il y a 3 heures',
+			'date'     => toDate("2012-12-01 17:16:18"),
 			'title'    => 'Un chaton très con',
 			'content'  => 'Le chat domestique (Felis silvestris catus) est un mammifère carnivore de la famille des félidés. Il est l’un des principaux animaux de compagnie et compte aujourd’hui une cinquantaine de races différentes reconnues par les instances de certification. Dans de nombreux pays, le chat entre dans le cadre de la législation sur les carnivores domestiques à l’instar du chien et [...]',
 			'comments' => array(
 				0 => array(
 					'author'  => 'An@rchiste',
-					'date'    => 'il y a 2 secondes',
+					'date'    => toDate("2013-01-02 10:16:18"),
 					'content' => 'brûlons ces maudites créatures !'
 				),
 				1 => array(
 					'author'  => 'Egyptocrate',
-					'date'    => 'il y a 1 minute',
+					'date'    => toDate("2012-12-25 17:16:39"),
 					'content' => 'Que dieu protège ce malheureux'
 				)
 			)
