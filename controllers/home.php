@@ -9,11 +9,9 @@
  
  // je n'ai pas mis d'exemple de lib pour pas foutre toute la comprhéension en l'air :) 
  // mais si tu sais pas si ça doit aller dans le modele ou controlleur : ça peut aller dans la lib 
- addValidation('okay c\'est bon', $infosHeader);
- addInformation('Les truc de notif sont good', $infosHeader);
- addError('on peut même dire qu\'il est pas content', $infosHeader);
- // addError('okay c\'est bon', $infosHeader);
- // addInformation('okay c\'est bon', $infosHeader);
+ addValidation('You successfully did your first fake template ! congrat !', $infosHeader);
+ // addInformation('Les truc de notif sont good', $infosHeader);
+ // addError('on peut même dire qu\'il est pas content', $infosHeader);
  
  // okay appelons la vue
  callView('header', $infosHeader);
