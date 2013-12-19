@@ -213,7 +213,7 @@ a:hover
 
 .apercus_article_menu_gauche:hover
 {
-	background: #FFFFFF;
+	background: rgb(244, 244, 244);
 }
 
 .apercus_article_menu_gauche:last-child
@@ -271,6 +271,7 @@ a:hover
 {
 	width: 100%;
 	background: #fcfbfb;
+	border:1px solid #DBDBDB;
 	border-bottom: 3px solid #2c3e50;
 }
 
