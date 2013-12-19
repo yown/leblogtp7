@@ -305,7 +305,12 @@ hr
 .edit_commentaire
 {
 	position: relative;
-	left: 240px;
+	left: 155px;
+}
+
+.edit_commentaire .icon-cross2
+{
+	margin-left: 10px;
 }
 /* -----------------
 	Comm Articles
@@ -321,3 +326,4 @@ hr
 {
 	color: #bdc3c7;
 }
+

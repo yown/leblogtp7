@@ -125,10 +125,10 @@
 					<hr>
 					<!-- boutons commentaire -->
 					<p>
-						<a href="#">Lire</a>
+						<a href="#">Voir plus</a>
 						<span class="edit_commentaire">
-							<a href="#"><span class="icon-compose"></span></a>
-							<a href="#"><span class="icon-cross"></span></a>
+							<a href="#"><span class="icon-compose"></span> Editer</a> 
+							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
 						</span>
 						<a class="right" href="#"><span class="icon-comments"></span> 20</a>
 					</p>

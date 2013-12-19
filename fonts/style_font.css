@@ -38,6 +38,9 @@
 .icon-cross:before {
 	content: "\e616";
 }
+.icon-cross2:before {
+	content: "\e603";
+}
 .icon-compose:before {
 	content: "\e617";
 }
