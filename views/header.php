@@ -29,47 +29,50 @@
 			</ul>
 			<nav>
 				<ul id="connexion_inscription" class="right">
-					<li><a href="#">Inscription</a></li>
-					<li id="lien_connexion">
-						<a href="#">Connexion<span class="icon-arrow-down"></span></a>
-						<ul id="bloc_connexion">
-							<li>
-								<form action="#" method="POST">
-									<p>
-										<input type="text" name="pseudo" placeholder="Login">
-									</p>
-									<p>
-										<input type="password" name="pass" placeholder="Mot de passe">
-									</p>
-									<p>
-										<label for="co_auto">Connection auto : </label>
-										<input type="checkbox" name="co_auto" id="co_auto" />
-									</p>
-									<p>
-										<input type="submit" value="Connection">
-									</p>
-								</form>
-							</li>
-						</ul>
-					</li>
+			<?php
+				if(empty($pseudo))
+					echo '
+						<li><a href="#">Inscription</a></li>
+						<li id="lien_connexion">
+							<a href="#">Connexion<span class="icon-arrow-down"></span></a>
+							<ul id="bloc_connexion">
+								<li>
+									<form action="#" method="POST">
+										<p>
+											<input type="text" name="pseudo" placeholder="Login">
+										</p>
+										<p>
+											<input type="password" name="pass" placeholder="Mot de passe">
+										</p>
+										<p>
+											<label for="co_auto">Connection auto : </label>
+											<input type="checkbox" name="co_auto" id="co_auto" />
+										</p>
+										<p>
+											<input type="submit" value="Connection">
+										</p>
+									</form>
+								</li>
+							</ul>
+						</li>';
+				else
+					echo $pseudo;
+				?>
 				</ul>
 			</nav>
 		</div>
 	</header>
 	<!-- infobules -->
-	<div id="notif1" onclick="closeNotification(1)" class="infobulle valide">
-		<p>
-			Vous êtes maintenant connecté ! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span
-		</p>
-	</div>
-	<div id="notif2" onclick="closeNotification(2)" class="infobulle erreur">
-		<p>
-			Une erreur est surveneue ! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
-		</p>
-	</div>
-	<div id="notif3" onclick="closeNotification(3)" class="infobulle information">
-		<p>
-			Petite informatiooooonnn !!!! <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
-		</p>
-	</div>
+	<?php
+		$i=0;
+		foreach($notifications as $type => $notification)
+			foreach($notification as $message)
+				echo '
+					<div id="notif'.$i.'" onclick="closeNotification('.$i++.')" class="infobulle '.$type.'">
+						<p>
+							'.$message.' <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
+						</p>
+					</div>
+				';
+	?>
 	<div class="content marge-top">

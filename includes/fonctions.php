@@ -1,5 +1,4 @@
 <?php
-
 /*
  *---------------------------------------------------------------
  *                          Functions
@@ -22,6 +21,9 @@ function controllerExist($name)
 */
 function Loader($name)
 {
+	// Let's load all fonctions display/views fonctions
+	require_once('includes/viewsFonctions.php');
+	
 	if(file_exists('models/'.$name.'.php'))
 		require_once('models/'.$name.'.php');
 		
@@ -34,24 +36,7 @@ function Loader($name)
 	require_once('controllers/'.$name.'.php');
 }
 
-function callView($name, $my_protected_generated_data = null)
-{
-	if(!empty($my_protected_generated_data))
-		foreach($my_protected_generated_data as $key => $value)
-			$$key = $value;
-	
-	if(!file_exists('views/'.$name.'.php'))
-		exit('View '.$name.' Can\'t be loaded in fonctions.php::callView');
-	require('views/'.$name.'.php');
-}
-
-function show404()
-{
-	header("HTTP/1.0 404 Not Found");
-	callView('404');
-	exit;
-}
-
+//---------------
 
 function connect()
 {
@@ -64,12 +49,7 @@ function protectSQL($link, $value, $type = NULL)
 	return mysqli_real_escape_string($link, $value);
 }
 
-
-
-
-
-
-
+//---------------
 
 
 
