@@ -277,6 +277,11 @@ a:hover
 	background: #fcfbfb;
 	border:1px solid #DBDBDB;
 	border-bottom: 3px solid #2c3e50;
+	margin: 40px 0;
+}
+.article:first-child
+{
+margin-top:0px;
 }
 
 /* image de l'article */
