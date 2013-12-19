@@ -6,7 +6,7 @@
  *---------------------------------------------------------------
  */
 
-//connexion base de donnée tout ça , toutes fonctions ne dependant pas d'une utilisation genre 'billet'
+//connexion base de données tout ça , toutes fonctions ne dependant pas d'une utilisation genre 'billet'
 // il y aura une lib pour ça 
 
 /*
