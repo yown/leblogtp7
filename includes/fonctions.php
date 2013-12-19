@@ -59,7 +59,7 @@ function connect()
 	return $link;
 }
 
-function protectSQL($link, $value, $type == NULL)
+function protectSQL($link, $value, $type = NULL)
 {
 	return mysqli_real_escape_string($link, $value);
 }
