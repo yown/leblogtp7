@@ -63,12 +63,12 @@
 					<hr>
 					<!-- boutons commentaire -->
 					<p>
-						<a href="#">Voir plus</a>
+						<a href="#?plop=<?php echo $article['id']; ?>">Voir plus</a>
 						<span class="edit_commentaire">
 							<a href="#"><span class="icon-compose"></span> Editer</a> 
 							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
 						</span>
-						<a class="right" href="#"><span class="icon-comments"></span> 20</a>
+						<a class="right" href="#"><span class="icon-comments"></span> <?php echo $article['nb_comments']; ?></a>
 					</p>
 				</div>
 			</article>
