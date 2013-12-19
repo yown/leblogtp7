@@ -53,8 +53,16 @@ function show404()
 }
 
 
+function connect()
+{
+	$link = mysqli_connect("localhost","root","","blackwave") or die("Error ".mysqli_connect_error($link));
+	return $link;
+}
 
-
+function protectSQL($link, $value, $type == NULL)
+{
+	return mysqli_real_escape_string($link, $value);
+}
 
 
 
