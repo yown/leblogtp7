@@ -3,8 +3,26 @@
 // chech if form is not empty and valid
 function isValid($form)
 {
-	if(empty($form['pseudo']) || empty($form['pass']) || empty($form['pass2']))
-		return false;
+	$errors = array();
+
+	// if inputs are empty
+	if(empty($form['pseudo']) || empty($form['pass']) || empty($form['pass2']) || empty($form['mail']))
+	{
+		if(empty($form['pseudo']))
+			$errors[] = 'Vous devez saisir un pseudo';
+
+		if(empty($form['pass']))
+			$errors[] = 'Vous devez saisir un mot de pass';
+
+		if(empty($form['pass2']))
+			$errors[] = 'Vous devez saisir une confirmation de votre mot de passe';
+
+		if(empty($form['mail']))
+			$errors[] = 'Vous devez saisir une adresse email';
+
+		return $errors;
+	}
+	
 	
 	//check if pseudo already exist
 	$link = connect();
@@ -13,29 +31,42 @@ function isValid($form)
 	$result = mysqli_prepare($link, $query);
 	mysqli_stmt_bind_param($result, "s", $form['pseudo']);
 	mysqli_stmt_execute($result);
-	mysqli_stmt_fetch($result);
-
-	$pseudo_exist = mysqli_num_rows($result); // gives the number of matches of the query
-
-	var_dump($pseudo_exist);
-	if($pseudo_exist != 0) // if pseudo already exist
-		return false;
 
 
+	if(mysqli_stmt_fetch($result) != false) // if pseudo already exist
+		$errors[] = 'Votre pseudo existe déjà. Merci d\'en chosir un autre';
 
+
+	// check if pass != pass2
 	if($form['pass'] != $form['pass2'])
-		return false;
+		$errors[] = 'Vos deux mots de passe ne sont pas identiques';
+	
+		
+	// if mail is not correct
+	if(!filter_var($form['mail'], FILTER_VALIDATE_EMAIL))
+		$errors[] = 'Votre adresse email n\'est pas valide';
 
-	// hashage pass
-	$pass = sha1($form['pass']);
-
-
-
-	$query = 'INSERT INTO users (pseudo, pass, mail) value(?,?,?)';
-	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, $form['pseudo'], $pass, $form['mail']);
 
 	//close connection
 	mysqli_close($link);
+
+	return $errors;
+}
+
+
+function addUser($form)
+{
+	$link = connect();
+
+	$pass = sha1($form['pass']); // hashage pass
+
+	$query = 'INSERT INTO users (pseudo, pass, mail) value(?,?,?)';
+	$result = mysqli_prepare($link, $query);
+	mysqli_stmt_bind_param($result, "sss", $form['pseudo'], $pass, $form['mail']);
+	mysqli_stmt_execute($result);
+
+	mysqli_close($link);
+
+	return true;
 }
 ?>

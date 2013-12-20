@@ -349,7 +349,7 @@ hr
 	padding: 5px;
 }
 
-#inscription input[type=text], #inscription input[type=password]
+#inscription input[type=text], #inscription input[type=password], #inscription input[type=email]
 {
 	width: 350px;
 	padding: 5px;

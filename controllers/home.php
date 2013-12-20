@@ -2,10 +2,11 @@
 
  // Libs ans Models Automaticly loaded at APPPATH/libs and APPPATH/models if names are the identicals 
 
- 
- // je n'ai pas mis d'exemple de lib pour pas foutre toute la comprhéension en l'air :) 
- // mais si tu sais pas si ça doit aller dans le modele ou controlleur : ça peut aller dans la lib 
- addValidation('You successfully did your first fake template ! congrat !', $infosHeader);
+// if notifications
+if(isset($_GET['notif']))
+	if(htmlspecialchars($_GET['notif']) == 'inscription')
+ 		addValidation('Vous êtes maintenant inscrit sur Blackwave. Surfez !', $infosHeader);
+
  // addInformation('Les truc de notif sont good', $infosHeader);
  // addError('on peut même dire qu\'il est pas content', $infosHeader);
  

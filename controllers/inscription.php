@@ -1,10 +1,30 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
- // okay appelons la vue
- callView('header', $infosHeader);
- callView('inscription'); // sera sous la forme $non ou $helloMotherFuckingWorld, elle sont reinterpretées
+
+if(!empty($_POST))
+{
+
+	$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
+	$valid = true;
+
+	foreach ($errors as $key => $value) 
+	{
+		if($value != '') // if error exist
+		{
+			addError($value, $infosHeader); // insert error message
+			$valid = false;
+		}
+	}
+
+	if($valid == true) // if not errors
+	{
+		if(addUser($_POST)) // add user in bdd
+			header("Location: index.php?notif=inscription");
+	}
 
 
-if(isset($_POST))
-	isValid($_POST);
+}
+
+callView('header', $infosHeader);
+callView('inscription', $infosHeader);
 ?>
