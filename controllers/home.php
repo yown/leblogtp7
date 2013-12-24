@@ -11,7 +11,29 @@ if(isset($_GET['notif']))
  // addError('on peut même dire qu\'il est pas content', $infosHeader);
  
  $dataHome = array(
-	'recent_articles' => 'à faire',
+	'recent_articles' => array(
+		0 => array(
+			'id'			=> 1,
+			'image' 		=> 'http://lorempixel.com/70/70/',
+			'title' 		=> 'Petit article',
+			'author'		=> 'bob',
+			'nb_comments' 	=> 20
+			),
+		1 => array(
+			'id'			=> 2,
+			'image' 		=> 'http://lorempixel.com/70/70/',
+			'title' 		=> 'Merry Christmas',
+			'author'		=> 'Santa Claus',
+			'nb_comments' 	=> 100
+			),
+		2 => array(
+			'id'			=> 3,
+			'image' 		=> 'http://lorempixel.com/70/70/',
+			'title' 		=> 'Mac VS PC -> LOL',
+			'author'		=> 'Mr Apple',
+			'nb_comments' 	=> 56
+			)
+		),
 	'articles' => array(
 		0 => array(
 			'id'       => 42,
