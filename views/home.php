@@ -42,22 +42,25 @@
 				<div class="apercus_infos_article">
 					<p class="bloc_infos_article right">
 						<a href="#"><span class="icon-users"></span> <?php echo $article['author']; ?></a> - 
-						<span class="icon-calendar"></span> <?php echo $article['date']; ?>
+						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
 					</p>
 					<h1><a href="#"><?php echo $article['title']; ?></a></h1>
 					<p><?php echo $article['content']; ?></p>
 					<hr>
 					<!-- commentaires -->
 			<?php 
-				foreach($article['comments']as $comment)
-				{
-			?>
-					<div class="commentaire">
-						<p class="infos_commentaire"><?php echo $comment['author']; ?> <span class="right"><span class="icon-calendar"></span> <?php echo $comment['date']; ?></span></p>
-						<p><?php echo $comment['content']; ?></p>
-					</div>
-			<?php
-				}
+				if($article['nb_comments'] > 0)
+					foreach($article['comments'] as $comment)
+					{
+				?>
+						<div class="commentaire">
+							<p class="infos_commentaire"><?php echo $comment['author']; ?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['date']); ?></span></p>
+							<p><?php echo $comment['content']; ?></p>
+						</div>
+				<?php
+					}
+				else
+					echo 'Aucun commentaire';
 			?>
 					<hr>
 					<!-- boutons commentaire -->

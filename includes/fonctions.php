@@ -41,6 +41,7 @@ function Loader($name)
 function connect()
 {
 	$link = mysqli_connect("localhost","root","","blackwave") or die("Error ".mysqli_connect_error($link));
+	mysqli_set_charset ( $link , "utf8" );
 	return $link;
 }
 

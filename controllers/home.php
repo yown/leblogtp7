@@ -34,7 +34,7 @@ if(isset($_GET['notif']))
 			'nb_comments' 	=> 56
 			)
 		),
-	'articles' => array(
+	'articles' => getArticles() /*array(
 		0 => array(
 			'id'       => 42,
 			'image'    => 'http://lorempixel.com/650/300/',
@@ -77,7 +77,7 @@ if(isset($_GET['notif']))
 				)
 			)
 		)
-	)
+	)*/
  );
  
  // okay appelons la vue

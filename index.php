@@ -1,6 +1,7 @@
 <?php session_start();
 
 	require_once('includes/fonctions.php');
+	require_once('includes/userFonctions.php');
 /*
  *---------------------------------------------------------------
  *                        ENVIRONMENT
