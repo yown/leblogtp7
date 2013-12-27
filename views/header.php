@@ -35,7 +35,7 @@
 							<a href="#">Connexion<span class="icon-arrow-down"></span></a>
 							<ul id="bloc_connexion">
 								<li>
-									<form action="#" method="POST">
+									<form action="index.php" method="POST">
 										<p>
 											<input type="text" name="pseudo" placeholder="Login">
 										</p>
