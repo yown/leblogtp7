@@ -28,10 +28,10 @@ function getArticles($min = 0, $max = 5, $complete = true)
 								   LIMIT 0,2';
 				$valueComment = mysqli_query($link ,$query_comments);
 				$resultComment = mysqli_fetch_all($valueComment, MYSQLI_ASSOC);
-				mysqli_close($link);
 				$article['comments'] = $resultComment;
 			}
 		}
+	mysqli_close($link);
 	return $result;
 }
 
