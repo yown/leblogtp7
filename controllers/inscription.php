@@ -22,8 +22,6 @@ if(!empty($_POST))
 		{
 			// add user in bdd
 			header("Location: index.php?notif=inscription");
-			$_SESSION['id_user']    = $userExist['id_user']; // we set SESSION and current pseudo / id
-			$_SESSION['pseudo']     = $userExist['pseudo'];
 		}
 	}
 
