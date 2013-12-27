@@ -8,8 +8,6 @@
 
 $infosHeader = array
 (
-	'id_user'       => (empty($_SESSION['id_user']) ? null : $_SESSION['id_user']),
-	'pseudo'        => (empty($_SESSION['pseudo']) ? null : $_SESSION['pseudo']),
 	'notifications' => array
 	(
 		'valide'      => array(),

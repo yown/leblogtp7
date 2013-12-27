@@ -18,8 +18,13 @@ if(!empty($_POST))
 
 	if($valid == true) // if not errors
 	{
-		if(addUser($_POST)) // add user in bdd
+		if(addUser($_POST))
+		{
+			// add user in bdd
 			header("Location: index.php?notif=inscription");
+			$_SESSION['id_user']    = $userExist['id_user']; // we set SESSION and current pseudo / id
+			$_SESSION['pseudo']     = $userExist['pseudo'];
+		}
 	}
 
 

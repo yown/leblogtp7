@@ -28,7 +28,7 @@
 			<nav>
 				<ul id="connexion_inscription" class="right">
 			<?php
-				if(empty($pseudo))
+				if(empty($_SESSION['pseudo']))
 					echo '
 						<li><a href="index.php">Inscription</a></li>
 						<li id="lien_connexion">
@@ -54,7 +54,7 @@
 							</ul>
 						</li>';
 				else
-					echo $pseudo;
+					echo $_SESSION['pseudo'].' <li><a href="index.php?logout">Déconnexion</a></li>';
 				?>
 				</ul>
 			</nav>

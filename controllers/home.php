@@ -2,6 +2,12 @@
 
  // Libs ans Models Automaticly loaded at APPPATH/libs and APPPATH/models if names are the identicals 
 
+if(isset($_GET['logout']))
+{
+	$_SESSION['id_user']    = '';
+	$_SESSION['pseudo']     = '';
+}
+ 
 // if notifications
 if(isset($_GET['notif']))
 	if(htmlspecialchars($_GET['notif']) == 'inscription')
@@ -22,8 +28,6 @@ if(isset($_POST['login']))
 			addValidation("Félicitation vous êtes connecté", $infosHeader);
 			$_SESSION['id_user']    = $userExist['id_user'];
 			$_SESSION['pseudo']     = $userExist['pseudo'];
-			$infosHeader['id_user'] = $userExist['id_user'];
-			$infosHeader['pseudo']  = $userExist['pseudo'];
 		}
 		else
 			addError('Hum, ces identifiants sont faux', $infosHeader);
