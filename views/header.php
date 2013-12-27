@@ -63,14 +63,15 @@
 	<!-- infobules -->
 	<?php
 		$i=0;
-		foreach($notifications as $type => $notification)
-			foreach($notification as $message)
-				echo '
-					<div id="notif'.$i.'" onclick="closeNotification('.$i++.')" class="infobulle '.$type.'">
-						<p>
-							'.$message.' <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
-						</p>
-					</div>
-				';
+		if(!empty($notifications))
+			foreach($notifications as $type => $notification)
+				foreach($notification as $message)
+					echo '
+						<div id="notif'.$i.'" onclick="closeNotification('.$i++.')" class="infobulle '.$type.'">
+							<p>
+								'.$message.' <span class="right croix_infobule"><a href="#"><span class="icon-cross"></span></a></span>
+							</p>
+						</div>
+					';
 	?>
 	<div class="content marge-top">

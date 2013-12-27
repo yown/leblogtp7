@@ -64,6 +64,9 @@
 	if(controllerExist($controllerName))
 		Loader($controllerName);
 	else
+	{
+		require_once('includes/viewsFonctions.php');
 		show404();
+	}
 
 ?>

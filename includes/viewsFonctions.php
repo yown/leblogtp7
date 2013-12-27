@@ -36,7 +36,10 @@ function callView($name, $my_protected_generated_data = null)
 function show404()
 {
 	header("HTTP/1.0 404 Not Found");
+	
+	callView('header');
 	callView('404');
+	callView('footer');
 	exit;
 }
 
