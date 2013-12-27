@@ -70,9 +70,6 @@
 					</p>
 				</div>
 			</article>
-		<?php
-			} // end foreach
-		?>
 		</section>
 <?php
 

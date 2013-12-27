@@ -25,7 +25,7 @@ function getArticle($id)
 {
 	$link = connect(); // connexion bdd
 
-	$query = 'SELECT * FROM articles WHERE id = '.protectSQL($link, $id).')';
+	$query = 'SELECT * FROM articles WHERE id = '.protectSQL($link, $id);
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);
