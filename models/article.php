@@ -25,7 +25,7 @@ function getArticle($id)
 {
 	$link = connect(); // connexion bdd
 
-	$query = 'SELECT * FROM articles WHERE id = '.protectSQL($link, $id);
+	$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo FROM articles a INNER JOIN users u ON a.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);

@@ -32,16 +32,16 @@
 			<article class="article">
 				<!-- image article -->
 				<div class="bloc_image_article">
-					<img src="http://lorempixel.com/650/300/" alt="image">
+					<img src="<?php echo $article['image'];?>" alt="<?php echo $article['title'];?>">
 				</div>
 				<!-- contenu article -->
 				<div class="apercus_infos_article">
 					<p class="bloc_infos_article right">
-						<a href="#"><span class="icon-users"></span>Auteur</a> - 
-						<span class="icon-calendar"></span> date
+						<a href="#"><span class="icon-users"></span> <?php echo $article['pseudo'];?></a> - 
+						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
-					<h1><a href="#">Titre</a></h1>
-					<p>Contenu</p>
+					<h1><?php echo $article['title'];?></h1>
+					<p><?php echo $article['content'];?></p>
 					<hr>
 					<!-- commentaires -->
 			<?php /*
@@ -61,8 +61,7 @@
 					<hr>
 					<!-- boutons commentaire -->
 					<p>
-						<a href="#?plop=<?php echo $article['id']; ?>">Voir plus</a>
-						<span class="edit_commentaire">
+						<span>
 							<a href="#"><span class="icon-compose"></span> Editer</a> 
 							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
 						</span>
