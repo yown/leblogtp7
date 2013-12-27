@@ -1,6 +1,6 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
-function isValid($data, $statment == 'creation')
+function isValid($data, $statment = 'creation')
 {
 	if(!is_array($data))
 		return (is_numeric($data) && $statment == 'delete'); // if $data is numeric and $statment == delete -> return true

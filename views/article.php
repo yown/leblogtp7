@@ -29,48 +29,44 @@
 
 		<section id="content_articles" class="right">
 			
-		<?php
-			foreach($articles as $article) // for every articles
-			{
-		?>
 			<article class="article">
 				<!-- image article -->
 				<div class="bloc_image_article">
-					<img src="<?php echo $article['image']; ?>" alt="<?php echo $article['title']; ?>">
+					<img src="http://lorempixel.com/650/300/" alt="image">
 				</div>
 				<!-- contenu article -->
 				<div class="apercus_infos_article">
 					<p class="bloc_infos_article right">
-						<a href="#"><span class="icon-users"></span> <?php echo $article['author']; ?></a> - 
-						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
+						<a href="#"><span class="icon-users"></span>Auteur</a> - 
+						<span class="icon-calendar"></span> date
 					</p>
-					<h1><a href="#"><?php echo $article['title']; ?></a></h1>
-					<p><?php echo $article['content']; ?></p>
+					<h1><a href="#">Titre</a></h1>
+					<p>Contenu</p>
 					<hr>
 					<!-- commentaires -->
-			<?php 
+			<?php /*
 				if($article['nb_comments'] > 0)
 					foreach($article['comments'] as $comment)
-					{
+					{*/
 				?>
 						<div class="commentaire">
-							<p class="infos_commentaire"><?php echo $comment['author']; ?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['date']); ?></span></p>
-							<p><?php echo $comment['content']; ?></p>
+							<p class="infos_commentaire">Auteur <span class="right"><span class="icon-calendar"></span> Date</span></p>
+							<p>Commentaire</p>
 						</div>
 				<?php
-					}
+					/*}
 				else
-					echo 'Aucun commentaire';
+					echo 'Aucun commentaire';*/
 			?>
 					<hr>
 					<!-- boutons commentaire -->
 					<p>
-						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
+						<a href="#?plop=<?php echo $article['id']; ?>">Voir plus</a>
 						<span class="edit_commentaire">
 							<a href="#"><span class="icon-compose"></span> Editer</a> 
 							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
 						</span>
-						<a class="right" href="#"><span class="icon-comments"></span> <?php echo $article['nb_comments']; ?></a>
+						<a class="right" href="#"><span class="icon-comments"></span> Nb comment</a>
 					</p>
 				</div>
 			</article>
