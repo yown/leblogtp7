@@ -11,7 +11,7 @@ if(isset($_GET['notif']))
  // addError('on peut même dire qu\'il est pas content', $infosHeader);
  
  $dataHome = array(
-	'recent_articles' => array(
+	'recent_articles' => getArticles(0 , 5, false)/*array(
 		0 => array(
 			'id'			=> 1,
 			'image' 		=> 'http://lorempixel.com/70/70/',
@@ -33,7 +33,7 @@ if(isset($_GET['notif']))
 			'author'		=> 'Mr Apple',
 			'nb_comments' 	=> 56
 			)
-		),
+		)*/,
 	'articles' => getArticles() /*array(
 		0 => array(
 			'id'       => 42,
