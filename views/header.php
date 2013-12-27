@@ -30,7 +30,7 @@
 			<?php
 				if(empty($pseudo))
 					echo '
-						<li><a href="index.php?action=inscription">Inscription</a></li>
+						<li><a href="index.php">Inscription</a></li>
 						<li id="lien_connexion">
 							<a href="#">Connexion<span class="icon-arrow-down"></span></a>
 							<ul id="bloc_connexion">
@@ -43,11 +43,11 @@
 											<input type="password" name="pass" placeholder="Mot de passe">
 										</p>
 										<p>
-											<label for="co_auto">Connection auto : </label>
+											<label for="co_auto">Connexion auto : </label>
 											<input type="checkbox" name="co_auto" id="co_auto" />
 										</p>
 										<p>
-											<input type="submit" value="Connection">
+											<input type="submit" name="login" value="Connexion">
 										</p>
 									</form>
 								</li>

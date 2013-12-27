@@ -10,6 +10,26 @@ if(isset($_GET['notif']))
  // addInformation('Les truc de notif sont good', $infosHeader);
  // addError('on peut même dire qu\'il est pas content', $infosHeader);
  
+if(isset($_POST['login']))
+{
+	if(empty($_POST['pseudo']) OR empty($_POST['pass']))
+		addError('Hum, un des champ de connexion est vide', $infosHeader);
+	else
+	{
+		$userExist = userExist($_POST['pseudo'], $_POST['pass']);
+		if(!empty($userExist['id_user']))
+		{
+			addValidation("Félicitation vous êtes connecté", $infosHeader);
+			$_SESSION['id_user']    = $userExist['id_user'];
+			$_SESSION['pseudo']     = $userExist['pseudo'];
+			$infosHeader['id_user'] = $userExist['id_user'];
+			$infosHeader['pseudo']  = $userExist['pseudo'];
+		}
+		else
+			addError('Hum, ces identifiants sont faux', $infosHeader);
+	}
+}
+ 
  $dataHome = array(
 	'recent_articles' => getArticles(0 , 5, false)/*array(
 		0 => array(
