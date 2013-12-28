@@ -66,10 +66,15 @@
 					<!-- boutons commentaire -->
 					<p>
 						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
-						<span class="edit_commentaire">
-							<a href="#"><span class="icon-compose"></span> Editer</a> 
-							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
-						</span>
+						<?php
+						if(isAuthor($_SESSION['pseudo'], $article['author'])) 
+						{
+							echo '
+								<span class="edit_commentaire">
+									<a href="#"><span class="icon-compose"></span> Editer</a> 
+									<a href="#"><span class="icon-cross2"></span> Supprimer</a>
+								</span>';
+						}?>
 						<a class="right" href="#"><span class="icon-comments"></span> <?php echo $article['nb_comments']; ?></a>
 					</p>
 				</div>

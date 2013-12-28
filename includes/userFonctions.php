@@ -18,4 +18,13 @@ function userExist($pseudo, $mdp)
 	return $result;
 }
 
+/* Check if Session == author -> updates articles or comments */
+function isAuthor($pseudo_session, $pseudo_author)
+{
+	if($pseudo_session == $pseudo_author)
+		return true;
+	else
+		return false;
+}
+
 ?>

@@ -37,8 +37,8 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['pseudo'];?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
-					<h1 <?php if(isAuthorArticle($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['title'];?></h1>
-					<p <?php if(isAuthorArticle($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
+					<h1 <?php if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['title'];?></h1>
+					<p <?php if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
 					<hr>
 					<!-- commentaires -->
 			<?php 
@@ -48,21 +48,30 @@
 				?>
 						<div class="commentaire">
 							<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
-							<p><?php echo $comment['content'];?></p>
+							<p <?php if(isAuthor($_SESSION['pseudo'], $comment['pseudo'])) echo 'contenteditable="true"';?>><?php echo $comment['content'];?></p>
 						</div>
 				<?php
 					}
 				else
 					echo 'Aucun commentaire';
 			?>
-					<hr>
-					<!-- boutons commentaire -->
-					<p>
-						<span>
-							<a href="#"><span class="icon-compose"></span> Editer</a> 
-							<a href="#"><span class="icon-cross2"></span> Supprimer</a>
-						</span>
-						<a class="right" href="#"><span class="icon-comments"></span> Nb comment</a>
+						<?php 
+						if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) 
+						{
+							echo'<hr>
+								<!-- boutons commentaire -->
+								<p>
+											<span class="edit_commentaire_article">
+												<a href="#"><span class="icon-compose"></span> Editer</a> 
+												<a href="#"><span class="icon-cross2"></span> Supprimer</a>
+											</span>';
+						}
+						else
+						{
+							echo '<!-- boutons commentaire -->
+								<p>';
+						}
+						?>
 					</p>
 				</div>
 			</article>

@@ -279,9 +279,10 @@ a:hover
 	border-bottom: 3px solid #2c3e50;
 	margin: 40px 0;
 }
+
 .article:first-child
 {
-margin-top:0px;
+	margin-top:0px;
 }
 
 /* image de l'article */
@@ -316,6 +317,13 @@ hr
 {
 	position: relative;
 	left: 155px;
+}
+
+.edit_commentaire_article /* sur article */
+{
+	width: 170px;
+	margin: auto;
+	display: block;
 }
 
 .edit_commentaire .icon-cross2
