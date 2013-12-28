@@ -21,6 +21,26 @@ function isValid($data, $statment = 'creation')
 	return true;
 }
 
+/* Last articles in menu */
+function getLastArticles($min = 0, $max = 5)
+{
+	$link = connect(); // connexion bdd
+
+	$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, a.content, 
+			  (SELECT count(id) FROM comments WHERE id_user = a.id_article)as nb_comments
+			  FROM articles a
+			  JOIN users u
+			  ON a.id_user = u.id_user
+			  ORDER BY `date` DESC, nb_comments
+			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $max).'';
+
+	$value = mysqli_query($link ,$query);
+	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
+	mysqli_close($link);
+	return $result;
+}
+
+/* ----------  show article and comments ---------- */
 function getArticle($id)
 {
 	$link = connect(); // connexion bdd
@@ -32,6 +52,21 @@ function getArticle($id)
 	mysqli_close($link);
 	return $result;
 }
+
+function getComments($id)
+{
+	$link = connect(); // connexion bdd
+
+	$query = 'SELECT c.id_comment, c.id_user, c.content, c.created, u.pseudo FROM comments c INNER JOIN users u ON c.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
+
+	$value = mysqli_query($link ,$query);
+	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
+	mysqli_close($link);
+
+	return $result;
+}
+
+
 
 function addArticle($data)
 {

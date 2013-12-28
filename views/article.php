@@ -1,7 +1,4 @@
-<?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
-
-
-?>
+<?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');?>
 
 	<!-- Menu avec les 5 derniers articles -->
 		<section id="menu_gauche" class="left">
@@ -44,19 +41,19 @@
 					<p><?php echo $article['content'];?></p>
 					<hr>
 					<!-- commentaires -->
-			<?php /*
-				if($article['nb_comments'] > 0)
-					foreach($article['comments'] as $comment)
-					{*/
+			<?php 
+				if(!empty($comments))
+					foreach($comments as $comment)
+					{
 				?>
 						<div class="commentaire">
-							<p class="infos_commentaire">Auteur <span class="right"><span class="icon-calendar"></span> Date</span></p>
-							<p>Commentaire</p>
+							<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
+							<p><?php echo $comment['content'];?></p>
 						</div>
 				<?php
-					/*}
+					}
 				else
-					echo 'Aucun commentaire';*/
+					echo 'Aucun commentaire';
 			?>
 					<hr>
 					<!-- boutons commentaire -->
