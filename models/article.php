@@ -21,6 +21,16 @@ function isValid($data, $statment = 'creation')
 	return true;
 }
 
+/* Check if Session == author -> updates articles */
+function isAuthorArticle($pseudo_session, $pseudo_author)
+{
+	if($pseudo_session == $pseudo_author)
+		return true;
+	else
+		return false;
+}
+
+
 /* Last articles in menu */
 function getLastArticles($min = 0, $max = 5)
 {

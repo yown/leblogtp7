@@ -37,8 +37,8 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['pseudo'];?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
-					<h1><?php echo $article['title'];?></h1>
-					<p><?php echo $article['content'];?></p>
+					<h1 <?php if(isAuthorArticle($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['title'];?></h1>
+					<p <?php if(isAuthorArticle($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
 					<hr>
 					<!-- commentaires -->
 			<?php 
