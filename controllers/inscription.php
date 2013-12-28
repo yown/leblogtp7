@@ -7,16 +7,16 @@ if(!empty($_POST))
 	$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
 	$valid = true;
 
-	foreach ($errors as $key => $value) 
+	foreach ($errors as $value) 
 	{
-		if($value != '') // if error exist
+		if(!empty($value)) // if error exist
 		{
 			addError($value, $infosHeader); // insert error message
 			$valid = false;
 		}
 	}
 
-	if($valid == true) // if not errors
+	if($valid) // if not errors
 	{
 		if(addUser($_POST))
 		{

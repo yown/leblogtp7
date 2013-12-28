@@ -30,7 +30,7 @@
 			<?php
 				if(empty($_SESSION['pseudo']))
 					echo '
-						<li><a href="index.php">Inscription</a></li>
+						<li><a href="index.php?action=inscription">Inscription</a></li>
 						<li id="lien_connexion">
 							<a href="#">Connexion<span class="icon-arrow-down"></span></a>
 							<ul id="bloc_connexion">
