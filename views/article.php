@@ -38,7 +38,26 @@
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
 					<h1 <?php if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['title'];?></h1>
-					<p <?php if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
+					<p class="article_content" <?php if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
+					<hr>
+
+					<!-- Ajout commentaires -->
+					<?php 
+					if(!empty($_SESSION['pseudo']))
+					{
+						echo'
+						<h2>Ajouter un commentaire</h2>
+						<form action="#" method="POTS">
+							<p class="center">
+								<textarea name="content" id="addCom" placeholder="Votre commentaire"></textarea>
+								<input type="submit" value="Poster">
+							</p>
+						</form>';
+					}
+					else
+						echo '<p class="center">Vous devez être connecté pour poster un commentaire.</p>';
+					?>
+
 					<hr>
 					<!-- commentaires -->
 			<?php 
@@ -54,25 +73,19 @@
 					}
 				else
 					echo 'Aucun commentaire';
-			?>
-						<?php 
-						if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) 
-						{
-							echo'<hr>
-								<!-- boutons commentaire -->
-								<p>
-											<span class="edit_commentaire_article">
-												<a href="#"><span class="icon-compose"></span> Editer</a> 
-												<a href="#"><span class="icon-cross2"></span> Supprimer</a>
-											</span>';
-						}
-						else
-						{
-							echo '<!-- boutons commentaire -->
-								<p>';
-						}
-						?>
-					</p>
+		
+					if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) 
+					{
+						echo'<hr>
+						<!-- boutons commentaire -->
+						<p>
+							<span class="edit_commentaire_article">
+								<a href="#"><span class="icon-compose"></span> Editer</a> 
+								<a href="#"><span class="icon-cross2"></span> Supprimer</a>
+							</span>
+						<p>';
+					}
+				?>
 				</div>
 			</article>
 		</section>

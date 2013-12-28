@@ -48,6 +48,11 @@ a:hover
 	float: left;
 }
 
+.center
+{
+	text-align: center;
+}
+
 /* ------- infobulles --------- */
 .infobulle
 {
@@ -305,11 +310,22 @@ a:hover
 	display: inline-block;
 }
 
+.article h2
+{
+	font-size: 14px;
+}
+
 hr 
 { 
 	background-color: #bdc3c7; 
 	height: 1px; 
 	border: 0; 
+}
+
+/* content de l'article */
+.article_content
+{
+	margin-bottom: 50px;
 }
 
 /* bouton pour editer le commentaire */
@@ -345,6 +361,12 @@ hr
 	color: #bdc3c7;
 }
 
+/* textaearea pour ajouter des commentaires */
+#addCom
+{
+	width: 99%;
+	height: 100px;
+}
 /* -------------------------------------------------------
 					PAGE INSCRIPTION
 -------------------------------------------------------- */
