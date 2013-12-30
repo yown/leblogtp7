@@ -21,9 +21,7 @@
 		<div class="content">
 			<p id="logo" class="left"><a href="index.php"><img src="images/logo.png" alt="Black Wave"> <span>Black Wave</span></a></p>
 			<ul id="categories_header" class="left">
-				<li>Categorie 1</li>
-				<li>Categorie 2</li>
-				<li>Categorie 3</li>
+				<li><a href="index.php?action=article&etat=new"><span class="icon-compose"></span> Add an article</a></li>
 			</ul>
 			<nav>
 				<ul id="connexion_inscription" class="right">

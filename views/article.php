@@ -37,8 +37,8 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['pseudo'];?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
-					<h1 <?php if(!empty($_SESSION['pseudo'])) if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['title'];?></h1>
-					<p class="article_content" <?php if(!empty($_SESSION['pseudo'])) if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) echo 'contenteditable="true"';?>><?php echo $article['content'];?></p>
+					<h1><?php echo $article['title'];?></h1>
+					<p class="article_content"><?php echo $article['content'];?></p>
 					<hr>
 
 					<!-- Ajout commentaires -->
@@ -67,7 +67,7 @@
 				?>
 						<div class="commentaire">
 							<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
-							<p <?php if(!empty($_SESSION['pseudo']))if(isAuthor($_SESSION['pseudo'], $comment['pseudo'])) echo 'contenteditable="true"';?>><?php echo $comment['content'];?></p>
+							<p ><?php echo $comment['content'];?></p>
 						</div>
 				<?php
 					}
