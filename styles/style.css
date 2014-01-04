@@ -384,3 +384,43 @@ hr
 	width: 350px;
 	padding: 5px;
 }
+
+
+/* -------------------------------------------------------
+					PAGE EDIT ARTICLE
+-------------------------------------------------------- */
+#edit_article 
+{
+	width: 800px;
+	margin: auto;
+}
+
+#edit_article h1 
+{
+	color: #2c3e50;
+}
+
+#tab_edit_article
+{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#tab_edit_article td 
+{
+	width: 50%;
+	border-bottom: 1px solid black;
+	padding: 20px 20px 20px 15px;
+}
+
+#tab_edit_article input[type=text]
+{
+	width: 100%;
+}
+
+
+#tab_edit_article textarea
+{
+	width: 100%;
+	height: 200px;
+}

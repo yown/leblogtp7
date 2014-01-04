@@ -66,37 +66,4 @@ function getComments($id)
 	return $result;
 }
 
-
-
-function addArticle($data)
-{
-	$link = connect(); // connexion bdd
-
-	$query = 'INSERT INTO articles (id_user, title, image, content, id_category, created, updated) value('.protectSQL($link, $data['id_user']).','.protectSQL($link, $data['title']).','.protectSQL($link, $data['image']).','.protectSQL($link, $data['content']).','.protectSQL($link, $data['id_category']).', NOW(), NOW())';
-
-	$value = mysqli_query($link ,$query);
-	mysqli_close($link);
-	return $value;
-}
-
-function editArticle($data)
-{
-	$link = connect();
-	$query = 'UPDATE articles set id_user = '.protectSQL($link, $data['id_user']).', title = '.protectSQL($link, $data['title']).', image = '.protectSQL($link, $data['image']).', content = '.protectSQL($link, $data['content']).', id_category = '.protectSQL($link, $data['id_category']).', udpdated = NOW() WHERE id_article = '.protectSQL($link, $data['id_article']);
-
-	$value = mysqli_query($link ,$query);
-	mysqli_close($link);
-	return $value;
-}
-
-function deleteArticle($id_article)
-{
-	$link = connect();
-	$query = 'DELETE FROM articles WHERE id_article = '.protectSQL($link, $id_article);
-
-	$value = mysqli_query($link ,$query);
-	mysqli_close($link);
-	return $value;
-}
-
 ?>

@@ -14,15 +14,29 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,300|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="js/script.js"> </script>
 	<link rel="stylesheet" href="fonts/style_font.css">
+
+	<!-- Tinymce -->
+	<script type="text/javascript" src="js/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript">
+	tinymce.init({
+	    selector: "textarea"
+	 });
+	</script>
 </head>
 <body>
 	<!-- header -->
 	<header id="header">
 		<div class="content">
 			<p id="logo" class="left"><a href="index.php"><img src="images/logo.png" alt="Black Wave"> <span>Black Wave</span></a></p>
-			<ul id="categories_header" class="left">
-				<li><a href="index.php?action=article&etat=new"><span class="icon-compose"></span> Add an article</a></li>
-			</ul>
+			<?php 
+			if(!empty($_SESSION['pseudo']))
+			{
+				echo '
+					<ul id="categories_header" class="left">
+						<li><a href="index.php?action=editArticle"><span class="icon-compose"></span> Add an article</a></li>
+					</ul>';
+			}
+			?>
 			<nav>
 				<ul id="connexion_inscription" class="right">
 			<?php
