@@ -6,6 +6,12 @@ $dataHome = array(
 	'comments' => getComments($_GET['id'])
  );
 
+if(isset($_GET['notif']))
+{
+ 	if(htmlspecialchars($_GET['notif']) == 'editArticle')
+ 		addValidation('Votre article a bien été modifié !', $infosHeader);
+}
+
 callView('header', $infosHeader);
 callView('article', $dataHome);
 ?>

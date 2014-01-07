@@ -33,7 +33,7 @@
 			{
 				echo '
 					<ul id="categories_header" class="left">
-						<li><a href="index.php?action=editArticle"><span class="icon-compose"></span> Add an article</a></li>
+						<li><a href="index.php?action=editArticle&statment=new"><span class="icon-compose"></span> Add an article</a></li>
 					</ul>';
 			}
 			?>

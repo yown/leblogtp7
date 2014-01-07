@@ -72,7 +72,7 @@
 							{
 								echo '
 									<span class="edit_commentaire">
-										<a href="#"><span class="icon-compose"></span> Editer</a> 
+										<a href="index.php?action=editArticle&statment=edit&id_article='.$article['id'].'"><span class="icon-compose"></span> Editer</a> 
 										<a href="#"><span class="icon-cross2"></span> Supprimer</a>
 									</span>';
 							}

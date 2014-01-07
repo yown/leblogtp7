@@ -10,8 +10,13 @@ if(isset($_GET['logout']))
  
 // if notifications
 if(isset($_GET['notif']))
+{
 	if(htmlspecialchars($_GET['notif']) == 'inscription')
  		addValidation('Vous êtes maintenant inscrit sur Blackwave. Surfez !', $infosHeader);
+ 	
+	if(htmlspecialchars($_GET['notif']) == 'newArticle')
+ 		addValidation('Votre article a bien été ajouté !', $infosHeader);
+}
 
  // addInformation('Les truc de notif sont good', $infosHeader);
  // addError('on peut même dire qu\'il est pas content', $infosHeader);
