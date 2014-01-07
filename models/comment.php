@@ -18,19 +18,38 @@ function getComments($id, $min = 0, $nb = 30)
 	return $result;
 }
 
-function addComment()
+function addComment($id_article, $content)
 {
-
+	$link  = connect();
+	$query = 'INSERT INTO comments(id_article, id_user, content, created) VALUES(?, ?, ?, NOW())';
+	
+	$result = mysqli_prepare($link, $query);
+	mysqli_stmt_bind_param($result, "iis", $id_article, $_SESSION['id_user'], $content);
+	
+	$retour = mysqli_stmt_execute($result);
+	mysqli_close($link);
+	return $retour;
 }
 
-function editComment()
+function editComment($id_comment, $comment)
 {
-
+	$link   = connect();
+	$query  = 'UPDATE comments SET content = ? WHERE id_comment = ?)';
+	
+	$result = mysqli_prepare($link, $query);
+	mysqli_stmt_bind_param($result, "si", $id_comment, $content);
+	
+	$retour = mysqli_stmt_execute($result);
+	mysqli_close($link);
+	return $retour;
 }
 
-function deleteComment()
+function deleteComment($id)
 {
-
+	$link = connect();
+	$value = mysqli_query($link , 'DELETE FROM comments WHERE id_comment = '.protectSQL($link, $id));
+	mysqli_close($link);
+	return $value;
 }
 
 ?>
