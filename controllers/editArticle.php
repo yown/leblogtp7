@@ -16,6 +16,15 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
 {
 	if(!empty($_POST))
 	{
+		$dataHome = array(
+			'categories' => getCategories(),
+			'article' => array(
+				'title' => $_POST['title'],
+				'id_cat' => $_POST['id_cat'],
+				'content' => $_POST['content']
+				)
+		 );
+
 		$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
 		$valid = true;
 
