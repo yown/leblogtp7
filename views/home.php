@@ -14,9 +14,9 @@
 				?>
 					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $recent_article['id']; ?>'">
 						<div class="image_apercus left">
-							<img src="<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'];?>">
+							<img src="<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'] ?>">
 						</div>
-						<p class="apercus_titre"><strong><?php echo $recent_article['title'];?></strong></p>
+						<p class="apercus_titre"><strong><?php echo reduceString($recent_article['title'], 26); ?></strong></p>
 						<p class="apercus_comments left"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></p>
 						<p class="apercus_auteur right"><span class="icon-users"></span> <?php echo $recent_article['author'];?></p>
 					</div>
@@ -37,7 +37,7 @@
 				<!-- image article -->
 				<div class="bloc_image_article">
 					<a href="index.php?action=article&id=<?php echo $article['id']; ?>">
-						<img src="<?php echo $article['image']; ?>" alt="<?php echo $article['title']; ?>">
+						<img src="<?php echo $article['image']; ?>" alt="<?php echo reduceString($article['title'], 50); ?>">
 					</a>
 				</div>
 				<!-- contenu article -->
@@ -47,7 +47,7 @@
 						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
 					</p>
 					<h1><a href="index.php?action=article&id=<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h1>
-					<p><?php echo $article['content']; ?></p>
+					<p><?php echo reduceString($article['content'], 200); ?></p>
 					<hr>
 					<!-- commentaires -->
 			<?php 

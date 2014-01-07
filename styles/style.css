@@ -299,6 +299,11 @@ a:hover
 	overflow: hidden;
 }
 
+.article .bloc_image_article img
+{
+	width:100%;
+}
+
 /* bloc contenant le resume, les comments ... */
 .article .apercus_infos_article
 {

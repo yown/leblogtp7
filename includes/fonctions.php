@@ -70,5 +70,17 @@ function toDate($time)
 		return 'il y a 1 minute';
 }
 
+function reduceString($string, $size)
+{
+    $lastEspace = 0;
+    if( strlen($string) > $size )
+    {
+      $string = substr($string,0,$size);
+      $lastEspace = strrpos($string,' ');
+      $string = substr($string,0,$lastEspace).'...';
+    }
+    return $string;
+}
+
 
 ?>
