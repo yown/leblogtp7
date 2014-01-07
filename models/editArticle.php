@@ -24,7 +24,6 @@ function isValid($form, $statment = 'creation')
 		//check image
 		if(!empty($form['image']))
 		{
-			var_dump($_FILES['image']);
 			if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)
 			{
 				// if image is not so big
