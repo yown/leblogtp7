@@ -16,6 +16,9 @@ if(isset($_GET['notif']))
  	
 	if(htmlspecialchars($_GET['notif']) == 'newArticle')
  		addValidation('Votre article a bien été ajouté !', $infosHeader);
+
+ 	if(htmlspecialchars($_GET['notif']) == 'deleteArticle')
+ 		addValidation('Votre article a bien été supprimé !', $infosHeader);
 }
 
  // addInformation('Les truc de notif sont good', $infosHeader);

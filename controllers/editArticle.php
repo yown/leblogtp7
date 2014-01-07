@@ -110,6 +110,13 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'edit'))
 		header("Location: index.php?action=home");
 }
 
+// if delete article
+if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'delete'))
+{
+	deleteArticle(htmlspecialchars($_GET['id_article']));
+	header("Location: index.php?action=home&notif=deleteArticle");
+}
+
 callView('header', $infosHeader);
 callView('editArticle', $dataHome);
 ?>

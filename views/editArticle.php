@@ -1,6 +1,13 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');?>
 		<section id="edit_article">
-			<h1 class="center">Nouvel article</h1>	
+			<h1 class="center">
+				<?php 
+				if(htmlspecialchars($_GET['statment']) == "new")
+					echo "Nouvel article";
+				else
+					echo "Editer mon article";
+				?>
+			</h1>	
 			<article class="article">
 				<form action="#" method="POST">
 					<table id="tab_edit_article">
@@ -10,7 +17,7 @@
 						</tr>
 						<tr>
 							<td><label for="image_input">Image de l'article</label></td>
-							<td><input type="file" id="image_input" name="image" ></td>
+							<td><input type="file" id="image_input" name="monfichier" /></td>
 						</tr>
 						<tr>
 							<td><label for="id_cat_input">Catégorie de l'article</label></td>

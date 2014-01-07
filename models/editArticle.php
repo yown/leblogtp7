@@ -1,5 +1,8 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
+
+//require_once('model/comment.php');
+
 function isValid($form, $statment = 'creation')
 {
 
@@ -21,31 +24,32 @@ function isValid($form, $statment = 'creation')
 				$errors[] = 'Le contenu de votre article ne peu pas être vide';
 		}
 
-		//check image
-		if(!empty($form['image']))
-		{
-			if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)
-			{
-				// if image is not so big
-			 	if ($_FILES['image']['size'] <= 2000000)
-		        {
-		 			$infosfichier = pathinfo($_FILES['image']['name']);
-					$extension_upload = $infosfichier['extension']; // extension image
-					$extensions_autorisees = array('jpg', 'jpeg', 'png');
+		/*
+		var_dump($_FILES);
+		var_dump($_FILES['monfichier']);
 
-	                if (in_array($extension_upload, $extensions_autorisees)) // if $extension_ipload is author
-	                	return $errors;
-	                else
-	                	$errors[] = 'L\'extension de votre image n\'est pas autorisée (Seulement jpg, jped, png)';
-		        }
-		        else
-		        	$errors[] = 'Le poid de votre image est trop important';
-			}
-			else
-				$errors[] = 'Une erreur est survenue lors de l\'upload de votre image';
-		}
-		else
-			$errors[] = 'Vous devez uploader une image de couverture pour votre article';
+		if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
+        {
+                // Testons si le fichier n'est pas trop gros
+                if ($_FILES['monfichier']['size'] <= 1000000)
+                {
+                        // Testons si l'extension est autorisée
+                        $infosfichier = pathinfo($_FILES['monfichier']['name']);
+                        $extension_upload = $infosfichier['extension'];
+                        $extensions_autorisees = array('jpg', 'jpeg', 'png');
+                        if (in_array($extension_upload, $extensions_autorisees))
+                        {
+                                // On peut valider le fichier et le stocker définitivement
+                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                                echo "L'envoi a bien été effectué !";
+                        }
+                        $errors[] = 'erreur extension';
+                }
+                else $errors[] = 'erreur poid';
+        }
+        else
+        	$errors[] = 'erreur image';
+        */
 	}
 	
 	return $errors;
@@ -109,11 +113,15 @@ function editArticle($data)
 function deleteArticle($id_article)
 {
 	$link = connect();
-	$query = 'DELETE FROM articles WHERE id_article = '.protectSQL($link, $id_article);
+	$query = 'DELETE FROM articles WHERE id_article = ?';
 
-	$value = mysqli_query($link ,$query);
+	$result = mysqli_prepare($link, $query);
+	mysqli_stmt_bind_param($result, "s", $id_article);
+	mysqli_stmt_execute($result);
+
 	mysqli_close($link);
-	return $value;
+	var_dump($id_article);
+	return $result;
 }
 
 ?>
