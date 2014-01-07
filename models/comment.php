@@ -18,4 +18,19 @@ function getComments($id, $min = 0, $nb = 30)
 	return $result;
 }
 
+function addComment()
+{
+
+}
+
+function editComment()
+{
+
+}
+
+function deleteComment()
+{
+
+}
+
 ?>
