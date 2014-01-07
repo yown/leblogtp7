@@ -2,7 +2,7 @@
 
 	<!-- Menu avec les 5 derniers articles -->
 		<section id="menu_gauche" class="left">
-			<h1>Derniers articles</h1>
+			<h1>Tu vas kiffer :</h1>
 			<div id="content_menu_gauche">
 				<!-- apercus article -->
 				<?php
