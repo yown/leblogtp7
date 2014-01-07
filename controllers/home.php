@@ -41,14 +41,25 @@ if(isset($_POST['login']))
 			addError('Hum, ces identifiants sont faux', $infosHeader);
 	}
 }
- 
- $dataHome = array(
+
+$nbPage = getNbPage();
+$minArticle = 0; 
+if(!empty($_GET['page']))
+{
+	//si non numerique ou pas compris dans les pages possibles
+	if(!is_numeric($_GET['page']) || (( (int)$_GET['page'] ) <= 0 || ( (int)$_GET['page'] ) > $nbPage ))
+		show404();
+		
+	$minArticle = NBARTICLEBYPAGE * (( (int) $_GET['page'] ) - 1);
+} 
+$dataHome = array(
 	'recent_articles' => getArticles(0 , 5, false),
-	'articles'        => getArticles()
- );
+	'articles'        => getArticles($minArticle, NBARTICLEBYPAGE),
+	'nb_pages'        => $nbPage 
+);
  
- // okay appelons la vue
- callView('header', $infosHeader);
- callView('home'  , $dataHome); 
+// okay appelons la vue
+callView('header', $infosHeader);
+callView('home'  , $dataHome); 
 
 ?>

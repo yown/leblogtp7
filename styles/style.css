@@ -373,6 +373,21 @@ hr
 	width: 99%;
 	height: 100px;
 }
+.pagination
+{
+	width:100%;
+	text-align:center;
+}
+.pagination span
+{
+	background-color:white;
+	color:black;
+	padding: 1px 4px;
+	border: 1px solid rgb(155, 155, 155);
+	border-radius:2px;
+	cursor:pointer;
+	margin-left:3px;
+}
 /* -------------------------------------------------------
 					PAGE INSCRIPTION
 -------------------------------------------------------- */

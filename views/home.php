@@ -85,6 +85,12 @@
 			</article>
 		<?php
 			} // end foreach
+			echo '<div class="pagination">';
+			for($i=1; $i < $nb_pages; $i++)
+			{
+				echo '<a href="index.php?page='.$i.'"><span>'.$i.'</span></a>';
+			}
+			echo '</div>';
 		?>
 		</section>
 <?php

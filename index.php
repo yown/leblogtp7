@@ -45,6 +45,8 @@
 	define('DEFAULTCONTROLLER', 'home');
 //THE ULTIMATE MOTH****KING PATH
 	define('APPPATH', realpath('.'));
+	
+	define('NBARTICLEBYPAGE', 2);
 
 /*
  * --------------------------------------------------------------------

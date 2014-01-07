@@ -2,7 +2,7 @@
 
 require_once('models/comment.php');
 
-function getArticles($min = 0, $max = 5, $complete = true)
+function getArticles($min, $nb, $complete = true)
 {
 	$link = connect(); // connexion bdd
 
@@ -12,7 +12,7 @@ function getArticles($min = 0, $max = 5, $complete = true)
 			  JOIN users u
 			  ON a.id_user = u.id_user
 			  ORDER BY `date` DESC, nb_comments
-			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $max).'';
+			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $nb).'';
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
@@ -29,4 +29,12 @@ function getArticles($min = 0, $max = 5, $complete = true)
 	return $result;
 }
 
+function getNbPage()
+{
+	$link = connect();
+	
+	$value = mysqli_query($link, "SELECT COUNT(id_article) as 'nombre' FROM articles");
+	$result = mysqli_fetch_assoc($value);
+	return ($result['nombre'] / NBARTICLEBYPAGE) + 1;
+}
 ?>
