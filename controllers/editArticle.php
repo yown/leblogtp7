@@ -37,6 +37,8 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
 			}
 		}
 
+		//test($_POST);
+
 		if($valid) // if not errors
 		{
 			if(addArticle($_POST))

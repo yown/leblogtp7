@@ -72,7 +72,7 @@
 				<?php
 					}
 				else
-					echo 'Aucun commentaire';
+					echo '<p class="center">Aucun commentaire</p>';
 		
 					if(!empty($_SESSION['pseudo']))
 						if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) 

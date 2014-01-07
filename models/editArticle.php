@@ -3,8 +3,31 @@
 
 //require_once('model/comment.php');
 
+/*function test($form)
+{
+	var_dump($_FILES['monfichier']);
+    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
+    {
+        // Testons si le fichier n'est pas trop gros
+        if ($_FILES['monfichier']['size'] <= 1000000)
+        {
+            // Testons si l'extension est autorisée
+            $infosfichier = pathinfo($_FILES['monfichier']['name']);
+            $extension_upload = $infosfichier['extension'];
+            $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
+            if (in_array($extension_upload, $extensions_autorisees))
+            {
+                // On peut valider le fichier et le stocker définitivement
+                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                echo "L'envoi a bien été effectué !";
+            }
+        }
+    }
+}*/
+
 function isValid($form, $statment = 'creation')
 {
+
 	if(!is_array($form))
 		return (is_numeric($data) && $statment == 'delete'); // if $data is numeric and $statment == delete -> return true
 
@@ -23,32 +46,28 @@ function isValid($form, $statment = 'creation')
 				$errors[] = 'Le contenu de votre article ne peu pas être vide';
 		}
 
-		/*
-		var_dump($_FILES);
-		var_dump($_FILES['monfichier']);
-
 		if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
         {
-                // Testons si le fichier n'est pas trop gros
-                if ($_FILES['monfichier']['size'] <= 1000000)
+            // Testons si le fichier n'est pas trop gros
+            if ($_FILES['monfichier']['size'] <= 1000000)
+            {
+                // Testons si l'extension est autorisée
+                $infosfichier = pathinfo($_FILES['monfichier']['name']);
+                $extension_upload = $infosfichier['extension'];
+                $extensions_autorisees = array('jpg', 'jpeg', 'png');
+                if (in_array($extension_upload, $extensions_autorisees))
                 {
-                        // Testons si l'extension est autorisée
-                        $infosfichier = pathinfo($_FILES['monfichier']['name']);
-                        $extension_upload = $infosfichier['extension'];
-                        $extensions_autorisees = array('jpg', 'jpeg', 'png');
-                        if (in_array($extension_upload, $extensions_autorisees))
-                        {
-                                // On peut valider le fichier et le stocker définitivement
-                                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
-                                echo "L'envoi a bien été effectué !";
-                        }
-                        $errors[] = 'erreur extension';
+                    // On peut valider le fichier et le stocker définitivement
+                    move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
+                    echo "L'envoi a bien été effectué !";
                 }
-                else $errors[] = 'erreur poid';
+                else
+                $errors[] = 'erreur extension';
+        	}
+            else $errors[] = 'erreur poid';
         }
         else
         	$errors[] = 'erreur image';
-        */
 	}
 	
 	return $errors;
@@ -119,7 +138,6 @@ function deleteArticle($id_article)
 	mysqli_stmt_execute($result);
 
 	mysqli_close($link);
-	var_dump($id_article);
 	return $result;
 }
 
