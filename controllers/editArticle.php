@@ -57,6 +57,7 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'edit'))
 		'categories' => getCategories(),
 		'article' => array(
 			'id_article' => $infosArticle['id_article'],
+			'image' => $infosArticle['image'],
 			'title' => $infosArticle['title'],
 			'id_cat' => $infosArticle['id_cat'],
 			'content' => $infosArticle['content']
@@ -94,7 +95,6 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'edit'))
 			{
 				if(editArticle($_POST))
 				{
-					echo "edit";
 					// add article in bdd
 					header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
 				}

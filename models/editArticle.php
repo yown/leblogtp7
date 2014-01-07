@@ -34,12 +34,11 @@ function isValid($form, $statment = 'creation')
 	                // Testons si l'extension est autorisée
 	                $infosfichier = pathinfo($_FILES['image']['name']);
 	                $extension_upload = $infosfichier['extension'];
-	                $extensions_autorisees = array('jpg', 'jpeg', 'png');
+	                $extensions_autorisees = array('jpg', 'gif', 'jpeg', 'png');
 	                if (in_array($extension_upload, $extensions_autorisees))
 	                {
 	                    // On peut valider le fichier et le stocker définitivement
 	                    move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
-	                    echo "L'envoi a bien été effectué !";
 	                }
 	                else
 	                $errors[] = 'L\'extention de votre image n\'est pas autorisée. (Seulement jpeg, jpg, png)';
@@ -49,7 +48,7 @@ function isValid($form, $statment = 'creation')
 	        else
 	        	$errors[] = 'Une erreur est survenue lors du telechargement de votre image';
 	    }
-	    else
+	    else if(!isset($form['image_exist'])) 
 	    	$errors[] = 'Vous devez importer une image de couverture pour votre article';
 	}
 	
@@ -99,14 +98,23 @@ function getArticle($id)
 function editArticle($data)
 {
 	$link = connect();
-	$query = 'UPDATE articles set title = ?, image = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';
-
-	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "sssss", $data['title'], $data['image'], $data['content'], $data['id_cat'], $data['id_article']);
+	if(!empty($_FILES['image']['name']))
+	{
+		$query = 'UPDATE articles set title = ?, image = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';
+		$result = mysqli_prepare($link, $query);
+		mysqli_stmt_bind_param($result, "sssss", $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat'], $data['id_article']);
+		mysqli_stmt_execute($result);
+	}
+	else
+	{
+		$query = 'UPDATE articles set title = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';	
+		$result = mysqli_prepare($link, $query);
+		mysqli_stmt_bind_param($result, "ssss", $data['title'], $data['content'], $data['id_cat'], $data['id_article']);
+		mysqli_stmt_execute($result);
+	}
+		
 	mysqli_stmt_execute($result);
-
 	mysqli_close($link);
-	var_dump($result);
 	return $result;
 }
 

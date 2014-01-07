@@ -17,7 +17,20 @@
 						</tr>
 						<tr>
 							<td><label for="image_input">Image de l'article</label></td>
-							<td><input type="file" id="image_input" name="image" /></td>
+							<?php 
+							if(!empty($article['image']))
+							{
+								echo '<td>
+										<img src="images/uploads/'.$article['image'].'" alt="image" width="200">
+										<input type="file" id="image_input" name="image" />
+										<input type="hidden" name="image_exist">
+									</td>';
+							}
+							else
+							{
+								echo '<td><input type="file" id="image_input" name="image" /></td>';
+							}
+							?>
 						</tr>
 						<tr>
 							<td><label for="id_cat_input">Catégorie de l'article</label></td>
@@ -26,9 +39,11 @@
 									<?php 
 									foreach ($categories as $list_cat) 
 									{
-									?>
-										<option value="<?php echo $list_cat['id_cat'];?>"><?php echo $list_cat['name'];?></option>
-									<?php
+										if($list_cat['id_cat'] == $article['id_cat'])
+									 		echo '<option value="'.$list_cat['id_cat'].'" selected>'.$list_cat['name'].'</option>';
+									 	else
+									 		echo '<option value="'.$list_cat['id_cat'].'">'.$list_cat['name'].'</option>';
+
 									}
 									?>
 						       </select>
@@ -43,7 +58,12 @@
 						</tr>
 					</table>
 					<input type="hidden" name="id_article" value="<?php echo $article['id_article'];?>">
-					<p class="center"><input type="submit" value="Créer"></p>
+					<?php 
+					if(htmlspecialchars($_GET['statment']) == "new")
+						echo '<p class="center"><input type="submit" value="Créer"></p>';
+					else
+						echo '<p class="center"><input type="submit" value="Modifier"></p>';
+					?>
 				</form>
 			</article>
 		</section>

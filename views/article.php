@@ -81,8 +81,8 @@
 							<!-- boutons commentaire -->
 							<p>
 								<span class="edit_commentaire_article">
-									<a href="#"><span class="icon-compose"></span> Editer</a> 
-									<a href="#"><span class="icon-cross2"></span> Supprimer</a>
+										<a href="index.php?action=editArticle&statment=edit&id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-compose"></span> Editer</a> 
+										<a href="index.php?action=editArticle&statment=delete&id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-cross2"></span> Supprimer</a>
 								</span>
 							<p>';
 						}
