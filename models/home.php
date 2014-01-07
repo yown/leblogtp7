@@ -24,6 +24,7 @@ function getArticles($min = 0, $max = 5, $complete = true)
 								   FROM comments c
 								   JOIN users u
 								   ON u.id_user = c.id_user
+								   WHERE c.id_article = '.protectSQL($link, $article['id']).'
 								   ORDER BY `date` DESC
 								   LIMIT 0,2';
 				$valueComment = mysqli_query($link ,$query_comments);
