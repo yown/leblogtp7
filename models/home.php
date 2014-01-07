@@ -1,5 +1,7 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
+require_once('models/comment.php');
+
 function getArticles($min = 0, $max = 5, $complete = true)
 {
 	$link = connect(); // connexion bdd
@@ -19,17 +21,8 @@ function getArticles($min = 0, $max = 5, $complete = true)
 		foreach($result as &$article)
 		{
 			if($article['nb_comments'] > 0)
-			{
-				$query_comments = 'SELECT c.created as `date`, c.content, u.pseudo as author
-								   FROM comments c
-								   JOIN users u
-								   ON u.id_user = c.id_user
-								   WHERE c.id_article = '.protectSQL($link, $article['id']).'
-								   ORDER BY `date` DESC
-								   LIMIT 0,2';
-				$valueComment = mysqli_query($link ,$query_comments);
-				$resultComment = mysqli_fetch_all($valueComment, MYSQLI_ASSOC);
-				$article['comments'] = $resultComment;
+			{				
+				$article['comments'] = getComments($article['id'], 0, 2);
 			}
 		}
 	mysqli_close($link);

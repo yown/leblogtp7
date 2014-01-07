@@ -1,5 +1,7 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
+require_once('models/comment.php');
+
 function isValid($data, $statment = 'creation')
 {
 	if(!is_array($data))
@@ -50,19 +52,6 @@ function getArticle($id)
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);
 	mysqli_close($link);
-	return $result;
-}
-
-function getComments($id)
-{
-	$link = connect(); // connexion bdd
-
-	$query = 'SELECT c.id_comment, c.id_user, c.content, c.created, u.pseudo FROM comments c INNER JOIN users u ON c.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
-
-	$value = mysqli_query($link ,$query);
-	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
-	mysqli_close($link);
-
 	return $result;
 }
 

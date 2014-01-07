@@ -5,7 +5,6 @@
 
 function isValid($form, $statment = 'creation')
 {
-
 	if(!is_array($form))
 		return (is_numeric($data) && $statment == 'delete'); // if $data is numeric and $statment == delete -> return true
 

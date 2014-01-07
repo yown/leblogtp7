@@ -12,13 +12,13 @@
 				foreach($recent_articles as $recent_article) // for every articles
 				{
 				?>
-					<div class="apercus_article_menu_gauche">
+					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $recent_article['id']; ?>'">
 						<div class="image_apercus left">
 							<img src="<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'];?>">
 						</div>
-						<p class="apercus_titre"><a href="#"><strong><?php echo $recent_article['title'];?></strong></a></p>
-						<p class="apercus_comments left"><a href="#"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></a></p>
-						<p class="apercus_auteur right"><a href="#"><span class="icon-users"></span> <?php echo $recent_article['author'];?></a></p>
+						<p class="apercus_titre"><strong><?php echo $recent_article['title'];?></strong></p>
+						<p class="apercus_comments left"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></p>
+						<p class="apercus_auteur right"><span class="icon-users"></span> <?php echo $recent_article['author'];?></p>
 					</div>
 				<?php
 				}
@@ -36,7 +36,9 @@
 			<article class="article">
 				<!-- image article -->
 				<div class="bloc_image_article">
-					<img src="<?php echo $article['image']; ?>" alt="<?php echo $article['title']; ?>">
+					<a href="index.php?action=article&id=<?php echo $article['id']; ?>">
+						<img src="<?php echo $article['image']; ?>" alt="<?php echo $article['title']; ?>">
+					</a>
 				</div>
 				<!-- contenu article -->
 				<div class="apercus_infos_article">
@@ -44,7 +46,7 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['author']; ?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
 					</p>
-					<h1><a href="#"><?php echo $article['title']; ?></a></h1>
+					<h1><a href="index.php?action=article&id=<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h1>
 					<p><?php echo $article['content']; ?></p>
 					<hr>
 					<!-- commentaires -->
@@ -54,7 +56,7 @@
 					{
 				?>
 						<div class="commentaire">
-							<p class="infos_commentaire"><?php echo $comment['author']; ?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['date']); ?></span></p>
+							<p class="infos_commentaire"><?php echo $comment['pseudo']; ?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
 							<p><?php echo $comment['content']; ?></p>
 						</div>
 				<?php

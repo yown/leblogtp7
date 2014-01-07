@@ -223,6 +223,7 @@ a:hover
 {
 	background: rgb(231, 231, 231);
 	-webkit-transition: background 0.1s ease-in-out;
+	cursor:pointer;
 }
 
 .apercus_article_menu_gauche:last-child
