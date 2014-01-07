@@ -73,7 +73,6 @@ function addArticle($data)
 
 	// add image
 	move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
-
 	$query = 'INSERT INTO articles (id_user, title, image, content, id_cat, created, updated) value(?,?,?,?,?, NOW(), NOW())';
 
 	$result = mysqli_prepare($link, $query);
