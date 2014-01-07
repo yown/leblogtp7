@@ -3,28 +3,6 @@
 
 //require_once('model/comment.php');
 
-/*function test($form)
-{
-	var_dump($_FILES['monfichier']);
-    if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
-    {
-        // Testons si le fichier n'est pas trop gros
-        if ($_FILES['monfichier']['size'] <= 1000000)
-        {
-            // Testons si l'extension est autorisée
-            $infosfichier = pathinfo($_FILES['monfichier']['name']);
-            $extension_upload = $infosfichier['extension'];
-            $extensions_autorisees = array('jpg', 'jpeg', 'gif', 'png');
-            if (in_array($extension_upload, $extensions_autorisees))
-            {
-                // On peut valider le fichier et le stocker définitivement
-                move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
-                echo "L'envoi a bien été effectué !";
-            }
-        }
-    }
-}*/
-
 function isValid($form, $statment = 'creation')
 {
 
@@ -46,28 +24,33 @@ function isValid($form, $statment = 'creation')
 				$errors[] = 'Le contenu de votre article ne peu pas être vide';
 		}
 
-		if (isset($_FILES['monfichier']) AND $_FILES['monfichier']['error'] == 0)
-        {
-            // Testons si le fichier n'est pas trop gros
-            if ($_FILES['monfichier']['size'] <= 1000000)
-            {
-                // Testons si l'extension est autorisée
-                $infosfichier = pathinfo($_FILES['monfichier']['name']);
-                $extension_upload = $infosfichier['extension'];
-                $extensions_autorisees = array('jpg', 'jpeg', 'png');
-                if (in_array($extension_upload, $extensions_autorisees))
-                {
-                    // On peut valider le fichier et le stocker définitivement
-                    move_uploaded_file($_FILES['monfichier']['tmp_name'], 'uploads/' . basename($_FILES['monfichier']['name']));
-                    echo "L'envoi a bien été effectué !";
-                }
-                else
-                $errors[] = 'erreur extension';
-        	}
-            else $errors[] = 'erreur poid';
-        }
-        else
-        	$errors[] = 'erreur image';
+		if($_FILES['image']['size'] != 0)
+		{
+			if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)
+	        {
+	            // Testons si le fichier n'est pas trop gros
+	            if ($_FILES['image']['size'] <= 1000000)
+	            {
+	                // Testons si l'extension est autorisée
+	                $infosfichier = pathinfo($_FILES['image']['name']);
+	                $extension_upload = $infosfichier['extension'];
+	                $extensions_autorisees = array('jpg', 'jpeg', 'png');
+	                if (in_array($extension_upload, $extensions_autorisees))
+	                {
+	                    // On peut valider le fichier et le stocker définitivement
+	                    move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
+	                    echo "L'envoi a bien été effectué !";
+	                }
+	                else
+	                $errors[] = 'L\'extention de votre image n\'est pas autorisée. (Seulement jpeg, jpg, png)';
+	        	}
+	            else $errors[] = 'Le poid de votre image est trop important';
+	        }
+	        else
+	        	$errors[] = 'Une erreur est survenue lors du telechargement de votre image';
+	    }
+	    else
+	    	$errors[] = 'Vous devez importer une image de couverture pour votre article';
 	}
 	
 	return $errors;
@@ -94,7 +77,7 @@ function addArticle($data)
 	$query = 'INSERT INTO articles (id_user, title, image, content, id_cat, created, updated) value(?,?,?,?,?, NOW(), NOW())';
 
 	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "sssss", $_SESSION['id_user'], $data['title'], $data['image'], $data['content'], $data['id_cat']);
+	mysqli_stmt_bind_param($result, "sssss", $_SESSION['id_user'], $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat']);
 	mysqli_stmt_execute($result);
 
 	mysqli_close($link);

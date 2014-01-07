@@ -9,7 +9,7 @@
 				?>
 			</h1>	
 			<article class="article">
-				<form action="#" method="POST">
+				<form action="#" method="POST" enctype="multipart/form-data">
 					<table id="tab_edit_article">
 						<tr>
 							<td><label for="titre_input">Titre</label></td>
@@ -17,7 +17,7 @@
 						</tr>
 						<tr>
 							<td><label for="image_input">Image de l'article</label></td>
-							<td><input type="file" id="image_input" name="monfichier" /></td>
+							<td><input type="file" id="image_input" name="image" /></td>
 						</tr>
 						<tr>
 							<td><label for="id_cat_input">Catégorie de l'article</label></td>

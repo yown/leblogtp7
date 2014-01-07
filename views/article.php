@@ -11,7 +11,7 @@
 				?>
 					<div class="apercus_article_menu_gauche">
 						<div class="image_apercus left">
-							<img src="<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'];?>">
+							<img src="images/uploads/<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'];?>">
 						</div>
 						<p class="apercus_titre"><a href="#"><strong><?php echo $recent_article['title'];?></strong></a></p>
 						<p class="apercus_comments left"><a href="#"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></a></p>
@@ -29,7 +29,7 @@
 			<article class="article">
 				<!-- image article -->
 				<div class="bloc_image_article">
-					<img src="<?php echo $article['image'];?>" alt="<?php echo $article['title'];?>">
+					<img src="images/uploads/<?php echo $article['image'];?>" alt="<?php echo $article['title'];?>">
 				</div>
 				<!-- contenu article -->
 				<div class="apercus_infos_article">

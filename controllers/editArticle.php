@@ -10,7 +10,6 @@ $dataHome = array(
 		)
  );
 
-
 // if add an article
 if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
 {
@@ -30,14 +29,9 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
 
 		foreach ($errors as $value) 
 		{
-			if(!empty($value)) // if error exist
-			{
 				addError($value, $infosHeader); // insert error message
 				$valid = false;
-			}
 		}
-
-		//test($_POST);
 
 		if($valid) // if not errors
 		{

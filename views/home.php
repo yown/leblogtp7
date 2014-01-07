@@ -14,7 +14,7 @@
 				?>
 					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $recent_article['id']; ?>'">
 						<div class="image_apercus left">
-							<img src="<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'] ?>">
+							<img src="images/uploads/<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'] ?>">
 						</div>
 						<p class="apercus_titre"><strong><?php echo reduceString($recent_article['title'], 26); ?></strong></p>
 						<p class="apercus_comments left"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></p>
@@ -37,7 +37,7 @@
 				<!-- image article -->
 				<div class="bloc_image_article">
 					<a href="index.php?action=article&id=<?php echo $article['id']; ?>">
-						<img src="<?php echo $article['image']; ?>" alt="<?php echo reduceString($article['title'], 50); ?>">
+						<img src="images/uploads/<?php echo $article['image']; ?>" alt="<?php echo reduceString($article['title'], 50); ?>">
 					</a>
 				</div>
 				<!-- contenu article -->
