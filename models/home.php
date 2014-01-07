@@ -6,7 +6,9 @@ function getArticles($min, $nb, $complete = true)
 {
 	$link = connect(); // connexion bdd
 
-	$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, a.content, 
+	//IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\',
+	//Ca plante si le mec est pas connecté
+	$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, a.content,
 			  (SELECT count(id) FROM comments WHERE id_user = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u

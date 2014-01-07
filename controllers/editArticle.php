@@ -11,7 +11,7 @@ $dataHome = array(
  );
 
 // if add an article
-if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
+if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 {
 	if(!empty($_POST))
 	{
@@ -45,7 +45,7 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'new'))
 }
 
 // if edit article
-if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'edit'))
+if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 {
 	$infosArticle = getArticle($_GET['id_article']);
 
@@ -107,7 +107,7 @@ if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'edit'))
 }
 
 // if delete article
-if(isset($_GET['statment']) && (htmlspecialchars($_GET['statment']) == 'delete'))
+if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))
 {
 	deleteArticle(htmlspecialchars($_GET['id_article']));
 	header("Location: index.php?action=home&notif=deleteArticle");

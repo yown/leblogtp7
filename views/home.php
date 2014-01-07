@@ -69,8 +69,9 @@
 					<p>
 						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
 						<?php
+						var_dump($article);
 						if(!empty($_SESSION['pseudo']))
-							if(isAuthor($_SESSION['pseudo'], $article['author'])) 
+							if($article['is_author'] == 1) 
 							{
 								echo '
 									<span class="edit_commentaire">
