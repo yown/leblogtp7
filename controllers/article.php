@@ -23,7 +23,12 @@ if(isset($_GET['notif']))
 if(isset($_GET['comment']))
 {
 	if($_GET['comment'] == 'add' && !empty($_POST['content']))
-		addComment($article['id_article'], $_POST['content']);
+	{
+		if(addComment($article['id_article'], $_POST['content']))
+			header("Location: index.php?action=article&amp;notif=addComment&amp;id=".$article['id_article']);
+		else
+			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+	}
 }
 
 callView('header', $infosHeader);
