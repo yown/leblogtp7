@@ -1,6 +1,22 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
 /* ----------------------------------------------
+			check if form is valid
+------------------------------------------------*/
+function isValid($form)
+{
+	$errors = array();
+
+	if($form['id_user'] == 0)
+		$errors[] = 'Vous devez selectionner un pseudo';
+
+	if($form['id_rank'] == 0)
+		$errors[] = 'Vous devez selectionner le type de compte a affecter';
+
+	return $errors;
+}
+
+/* ----------------------------------------------
 				get all user 
 ------------------------------------------------*/
 function getUser()
@@ -36,7 +52,7 @@ function editRank($id_user, $id_rank)
 	$link = connect();
 	$query = 'UPDATE users set id_rank = ? WHERE id_user = ?';
 	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "ss", $id_user, $id_rank);
+	mysqli_stmt_bind_param($result, "ss", $id_rank, $id_user);
 	mysqli_stmt_execute($result);
 
 	mysqli_close($link);

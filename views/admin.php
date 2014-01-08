@@ -7,27 +7,30 @@
 	<form action="#" method="POST" id="form_type_user">
 		<table>
 			<tr>
-				<td><label for="id_user_input">Pseudo</label></td>
-				<td><label for="id_rank_input">Type</label></td>
-				<td></td>
-			</tr>
-			<tr>
 				<td>
 					<select name="id_user" id="id_user_input">
+						<option value="0">Pseudo</option>
 						<?php 
 						foreach ($users as $user) 
 						{
-							echo '<option value="'.$user['id_user'].'">'.$user['pseudo'].'</option>';
+							if(isset($_POST) && ($_POST['id_user'] == $user['id_user']))
+								echo '<option value="'.$user['id_user'].'" selected>'.$user['pseudo'].'</option>';
+							else
+								echo '<option value="'.$user['id_user'].'">'.$user['pseudo'].'</option>';
 						}
 						?>
 					</select>
 				</td>
 				<td>
 					<select name="id_rank" id="id_rank_input">
+						<option value="0">Type</option>
 						<?php 
 						foreach ($ranks as $rank) 
 						{
-							echo '<option value="'.$rank['id_rank'].'">'.$rank['name'].'</option>';
+							if(isset($_POST) && ($_POST['id_rank'] == $rank['id_rank']))
+								echo '<option value="'.$rank['id_rank'].'" selected>'.$rank['name'].'</option>';
+							else
+								echo '<option value="'.$rank['id_rank'].'">'.$rank['name'].'</option>';
 						}
 						?>
 					</select>
