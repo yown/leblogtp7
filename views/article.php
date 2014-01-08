@@ -73,7 +73,14 @@
 							</div>
 							<?php
 							if(!empty($comment['isAuthor']))
-								echo '<div>plop</div>';
+								echo '<div>
+										<p>
+											<span class="edit_commentaire_article">
+													<a href="index.php?action=article&comment=edit&id='.htmlspecialchars($_GET['id']).'"><span class="icon-compose"></span> Editer</a> 
+													<a href="index.php?action=article&comment=delete&id='.htmlspecialchars($_GET['id']).'"><span class="icon-cross2"></span> Supprimer</a>
+											</span>
+										<p>
+									</div>';
 							?>
 						</div>
 				<?php
