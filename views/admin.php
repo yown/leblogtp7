@@ -7,21 +7,29 @@
 	<form action="#" method="POST" id="form_type_user">
 		<table>
 			<tr>
-				<td><label for="id_cat_input">Pseudo</label></td>
-				<td><label for="id_cat_input">Type</label></td>
+				<td><label for="id_user_input">Pseudo</label></td>
+				<td><label for="id_rank_input">Type</label></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>
 					<select name="id_user" id="id_user_input">
-						<option value="1" selected>Pseudo</option>
+						<?php 
+						foreach ($users as $user) 
+						{
+							echo '<option value="'.$user['id_user'].'">'.$user['pseudo'].'</option>';
+						}
+						?>
 					</select>
 				</td>
 				<td>
-					<select name="id_type" id="id_type_input">
-						<option value="1" selected>Administrateur</option>
-						<option value="2" selected>Blogger</option>
-						<option value="3" selected>Membre</option>
+					<select name="id_rank" id="id_rank_input">
+						<?php 
+						foreach ($ranks as $rank) 
+						{
+							echo '<option value="'.$rank['id_rank'].'">'.$rank['name'].'</option>';
+						}
+						?>
 					</select>
 				</td>
 				<td><input type="submit" value="Modifier"></td>
