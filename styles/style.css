@@ -459,7 +459,7 @@ display:block;
 #tab_edit_article td 
 {
 	width: 50%;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid rgb(191, 191, 191);
 	padding: 20px 20px 20px 15px;
 }
 

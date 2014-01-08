@@ -29,9 +29,13 @@ if(isset($_GET['comment']) && !empty($_SESSION['id_user']))
 		else
 			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
 	}
-	else if($_GET['comment'] == 'delete')
+	else if($_GET['comment'] == 'delete' && !empty($_GET['commentId']))
 	{
-		
+		//s'il est valide et a lui
+		if(deleteComment($_GET['commentId']))
+			header("Location: index.php?id=".$article['id_article']."&action=article&notif=deleteComment");
+		else
+			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
 	}
 }
 
