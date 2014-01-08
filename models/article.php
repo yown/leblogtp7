@@ -48,10 +48,10 @@ function getArticle($id)
 	$link = connect(); // connexion bdd
 
 	if(empty($_SESSION['id_user']))
-		$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat, c.name as name_cat FROM articles a INNER JOIN users u ON a.id_user = u.id_user INNER JOIN categories c ON c.id_cat = a.id_cat WHERE id_article = '.protectSQL($link, $id);
+		$query = 'SELECT a.id_article, a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat, c.name as name_cat FROM articles a INNER JOIN users u ON a.id_user = u.id_user INNER JOIN categories c ON c.id_cat = a.id_cat WHERE id_article = '.protectSQL($link, $id);
 
 	else
-		$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat, c.name as name_cat, IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\' FROM articles a INNER JOIN users u ON a.id_user = u.id_user INNER JOIN categories c ON c.id_cat = a.id_cat WHERE id_article = '.protectSQL($link, $id);
+		$query = 'SELECT a.id_article, a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat, c.name as name_cat, IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\' FROM articles a INNER JOIN users u ON a.id_user = u.id_user INNER JOIN categories c ON c.id_cat = a.id_cat WHERE id_article = '.protectSQL($link, $id);
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);

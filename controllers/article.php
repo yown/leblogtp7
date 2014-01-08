@@ -10,8 +10,20 @@ $dataHome = array(
 
 if(isset($_GET['notif']))
 {
- 	if(htmlspecialchars($_GET['notif']) == 'editArticle')
+ 	if($_GET['notif'] == 'editArticle')
  		addValidation('Votre article a bien été modifié !', $infosHeader);
+	if($_GET['notif'] == 'editComment')
+ 		addValidation('Votre article a bien été modifié !', $infosHeader);
+	if($_GET['notif'] == 'deleteComment')
+ 		addValidation('Votre article a bien été supprimé !', $infosHeader);
+	if($_GET['notif'] == 'addComment')
+ 		addValidation('Votre article a bien été ajouté !', $infosHeader);
+}
+
+if(isset($_GET['comment']))
+{
+	if($_GET['comment'] == 'add' && !empty($_POST['content']))
+		addComment($article['id_article'], $_POST['content']);
 }
 
 callView('header', $infosHeader);
