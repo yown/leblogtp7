@@ -9,6 +9,7 @@ function getComments($id, $min = 0, $nb = 30)
 			  INNER JOIN users u 
 			  ON c.id_user = u.id_user 
 			  WHERE id_article = '.protectSQL($link, $id).'
+			  ORDER BY created desc
 			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $nb);
 
 	$value = mysqli_query($link ,$query);

@@ -48,7 +48,7 @@
 					{
 						echo'
 						<h2>Ajouter un commentaire</h2>
-						<form action="index.php?action=article&amp;comment=add&amp;id='.$article['id_article'].'" method="POST">
+						<form action="index.php?action=article&comment=add&id='.$article['id_article'].'" method="POST">
 							<p class="center">
 								<textarea name="content" id="addCom" placeholder="Votre commentaire"></textarea>
 								<input type="submit" value="Poster">

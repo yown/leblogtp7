@@ -13,11 +13,11 @@ if(isset($_GET['notif']))
  	if($_GET['notif'] == 'editArticle')
  		addValidation('Votre article a bien été modifié !', $infosHeader);
 	if($_GET['notif'] == 'editComment')
- 		addValidation('Votre article a bien été modifié !', $infosHeader);
+ 		addValidation('Votre commentaire a bien été modifié !', $infosHeader);
 	if($_GET['notif'] == 'deleteComment')
- 		addValidation('Votre article a bien été supprimé !', $infosHeader);
+ 		addValidation('Votre commentaire a bien été supprimé !', $infosHeader);
 	if($_GET['notif'] == 'addComment')
- 		addValidation('Votre article a bien été ajouté !', $infosHeader);
+ 		addValidation('Votre commentaire a bien été ajouté !', $infosHeader);
 }
 
 if(isset($_GET['comment']))
@@ -25,7 +25,7 @@ if(isset($_GET['comment']))
 	if($_GET['comment'] == 'add' && !empty($_POST['content']))
 	{
 		if(addComment($article['id_article'], $_POST['content']))
-			header("Location: index.php?action=article&amp;notif=addComment&amp;id=".$article['id_article']);
+			header("Location: index.php?id=".$article['id_article']."&action=article&notif=addComment");
 		else
 			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
 	}
