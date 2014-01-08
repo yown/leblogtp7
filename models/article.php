@@ -65,7 +65,7 @@ function getSimilar($id_cat, $min = 0, $max = 5)
 	$link = connect(); // connexion bdd
 
 	$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, 
-			  (SELECT count(id) FROM comments WHERE id_user = a.id_article)as nb_comments
+			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u
 			  ON a.id_user = u.id_user WHERE a.id_cat = '.intval($id_cat).'

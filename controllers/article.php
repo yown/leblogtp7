@@ -20,7 +20,7 @@ if(isset($_GET['notif']))
  		addValidation('Votre commentaire a bien été ajouté !', $infosHeader);
 }
 
-if(isset($_GET['comment']))
+if(isset($_GET['comment']) && !empty($_SESSION['id_user']))
 {
 	if($_GET['comment'] == 'add' && !empty($_POST['content']))
 	{
@@ -28,6 +28,10 @@ if(isset($_GET['comment']))
 			header("Location: index.php?id=".$article['id_article']."&action=article&notif=addComment");
 		else
 			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+	}
+	else if($_GET['comment'] == 'delete')
+	{
+		
 	}
 }
 
