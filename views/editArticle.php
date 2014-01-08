@@ -67,8 +67,3 @@
 				</form>
 			</article>
 		</section>
-<?php
-
-callView('footer');
-
-?>

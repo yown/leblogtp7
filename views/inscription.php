@@ -20,8 +20,3 @@
 		</p>
 	</form>
 </section>
-<?php
-
-callView('footer');
-
-?>

@@ -115,4 +115,5 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))
 
 callView('header', $infosHeader);
 callView('editArticle', $dataHome);
+callView('footer');
 ?>

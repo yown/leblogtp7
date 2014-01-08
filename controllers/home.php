@@ -61,5 +61,5 @@ $dataHome = array(
 // okay appelons la vue
 callView('header', $infosHeader);
 callView('home'  , $dataHome); 
-
+callView('footer');
 ?>

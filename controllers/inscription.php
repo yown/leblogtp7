@@ -30,4 +30,5 @@ if(!empty($_POST))
 
 callView('header', $infosHeader);
 callView('inscription', $infosHeader);
+callView('footer');
 ?>

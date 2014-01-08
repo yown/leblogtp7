@@ -53,6 +53,12 @@ a:hover
 	text-align: center;
 }
 
+.small
+{
+	margin-top: 0;
+	font-size: medium;
+	font-weight: normal;
+}
 /* ------- infobulles --------- */
 .infobulle
 {

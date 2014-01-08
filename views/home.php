@@ -69,9 +69,8 @@
 					<p>
 						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
 						<?php
-						var_dump($article);
 						if(!empty($_SESSION['pseudo']))
-							if($article['is_author'] == 1) 
+							if(!empty($article['isAuthor'])) 
 							{
 								echo '
 									<span class="edit_commentaire">
@@ -94,8 +93,3 @@
 			echo '</div>';
 		?>
 		</section>
-<?php
-
-callView('footer');
-
-?>

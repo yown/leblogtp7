@@ -34,7 +34,7 @@ function getLastArticles($min = 0, $max = 5)
 			  JOIN users u
 			  ON a.id_user = u.id_user
 			  ORDER BY `date` DESC, nb_comments
-			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $max).'';
+			  LIMIT '.intval($min).', '.intval($max).'';
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
@@ -47,7 +47,11 @@ function getArticle($id)
 {
 	$link = connect(); // connexion bdd
 
-	$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo FROM articles a INNER JOIN users u ON a.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
+	if(empty($_SESSION['id_user']))
+		$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat FROM articles a INNER JOIN users u ON a.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
+
+	else
+		$query = 'SELECT a.id_user, a.title, a.image, a.content, a.created, u.pseudo, a.id_cat, IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\' FROM articles a INNER JOIN users u ON a.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
 
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);
@@ -55,4 +59,23 @@ function getArticle($id)
 	return $result;
 }
 
+
+function getSimilar($id_cat, $min = 0, $max = 5)
+{
+	$link = connect(); // connexion bdd
+
+	$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, 
+			  (SELECT count(id) FROM comments WHERE id_user = a.id_article)as nb_comments
+			  FROM articles a
+			  JOIN users u
+			  ON a.id_user = u.id_user WHERE a.id_cat = '.intval($id_cat).'
+			  ORDER BY `date` DESC, nb_comments
+			  LIMIT '.intval($min).', '.intval($max).'';
+
+	$value = mysqli_query($link ,$query);
+	$result = mysqli_fetch_all($value, MYSQLI_ASSOC);
+	mysqli_close($link);
+
+	return $result;
+}
 ?>

@@ -2,20 +2,20 @@
 
 	<!-- Menu avec les 5 derniers articles -->
 		<section id="menu_gauche" class="left">
-			<h1>Tu vas kiffer :</h1>
+			<h1>Tu vas kiffer : <span class="small">Dans la catégorie <?php echo $article['id_cat'];?></span></h1>
 			<div id="content_menu_gauche">
 				<!-- apercus article -->
 				<?php
-				foreach($recent_articles as $recent_article) // for every articles
+				foreach($similar_articles as $similar_article) // for every articles
 				{
 				?>
-					<div class="apercus_article_menu_gauche">
+					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $similar_article['id']; ?>'">
 						<div class="image_apercus left">
-							<img src="images/uploads/<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'];?>">
+							<img src="images/uploads/<?php echo $similar_article['image'];?>" alt="<?php echo $similar_article['title'];?>">
 						</div>
-						<p class="apercus_titre"><a href="#"><strong><?php echo $recent_article['title'];?></strong></a></p>
-						<p class="apercus_comments left"><a href="#"><span class="icon-comments"></span> <?php echo $recent_article['nb_comments'];?></a></p>
-						<p class="apercus_auteur right"><a href="#"><span class="icon-users"></span> <?php echo $recent_article['author'];?></a></p>
+						<p class="apercus_titre"><a href="#"><strong><?php echo $similar_article['title'];?></strong></a></p>
+						<p class="apercus_comments left"><a href="#"><span class="icon-comments"></span> <?php echo $similar_article['nb_comments'];?></a></p>
+						<p class="apercus_auteur right"><a href="#"><span class="icon-users"></span> <?php echo $similar_article['author'];?></a></p>
 					</div>
 				<?php
 				}
@@ -75,7 +75,7 @@
 					echo '<p class="center">Aucun commentaire</p>';
 		
 					if(!empty($_SESSION['pseudo']))
-						if(isAuthor($_SESSION['pseudo'], $article['pseudo'])) 
+						if(!empty($article['isAuthor'])) 
 						{
 							echo'<hr>
 							<!-- boutons commentaire -->
@@ -90,8 +90,3 @@
 				</div>
 			</article>
 		</section>
-<?php
-
-callView('footer');
-
-?>
