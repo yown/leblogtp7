@@ -1,8 +1,9 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');?>
 
 	<!-- Menu avec les 5 derniers articles -->
-		<section id="menu_gauche" class="left">
-			<h1>Tu vas kiffer : <span class="small">Dans la catégorie <?php echo $article['id_cat'];?></span></h1>
+		<section id="menu_gauche" class="left kiffe">
+			<h1>Tu vas kiffer :</h1>
+			<p class="small">Dans la catégorie <?php echo $article['name_cat'];?></p>
 			<div id="content_menu_gauche">
 				<!-- apercus article -->
 				<?php
