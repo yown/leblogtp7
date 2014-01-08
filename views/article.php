@@ -67,8 +67,14 @@
 					{
 				?>
 						<div class="commentaire <?php if(!empty($comment['isAuthor'])) echo 'owner'; ?>">
-							<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
-							<p ><?php echo $comment['content'];?></p>
+							<div>
+								<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
+								<p><?php echo $comment['content'];?></p>
+							</div>
+							<?php
+							if(!empty($comment['isAuthor']))
+								echo '<div>plop</div>';
+							?>
 						</div>
 				<?php
 					}

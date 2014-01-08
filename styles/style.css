@@ -367,6 +367,21 @@ hr
 	font-size: 14px;
 	margin-bottom: 20px;
 	color: #7f8c8d;
+	min-height:50px;
+}
+
+.owner:hover
+{
+	background-color:rgb(246, 246, 246);
+}
+.owner:hover div:first-child,
+.owner div:nth-child(2)
+{
+	display:none;
+}
+.owner:hover div:nth-child(2)
+{
+	display:block;
 }
 
 .comentaire .infos_commentaire
