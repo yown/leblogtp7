@@ -466,3 +466,18 @@ hr
 {
 	margin-top: 0;
 }
+
+/* -------------------------------------------------------
+						ZONE ADMIN
+-------------------------------------------------------- */
+#inscription h2
+{
+	font-size: 14px;
+	text-align: left;
+}
+
+#form_type_user
+{
+	width: 270px;
+	margin: auto;
+}

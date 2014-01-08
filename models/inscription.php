@@ -1,6 +1,8 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
-// chech if form is not empty and valid
+/* ----------------------------------------------
+		chech if form is not empty and valid
+------------------------------------------------*/
 function isValid($form)
 {
 	$errors = array();
@@ -8,6 +10,7 @@ function isValid($form)
 	// if inputs are empty
 	if(empty($form['pseudo']) || empty($form['pass']) || empty($form['pass2']) || empty($form['mail']))
 	{
+		//add error in errors array
 		if(empty($form['pseudo']))
 			$errors[] = 'Vous devez saisir un pseudo';
 
@@ -54,6 +57,9 @@ function isValid($form)
 }
 
 
+/* ----------------------------------------------
+			Add new user in bdd 
+------------------------------------------------*/
 function addUser($form)
 {
 	$link = connect();
