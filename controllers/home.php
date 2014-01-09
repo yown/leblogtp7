@@ -19,6 +19,10 @@ if(isset($_GET['notif']))
 
  	if(htmlspecialchars($_GET['notif']) == 'deleteArticle')
  		addValidation('Votre article a bien été supprimé !', $infosHeader);
+
+ 	 if(htmlspecialchars($_GET['notif']) == 'connect')
+		addValidation("Félicitation vous êtes connecté", $infosHeader);
+
 }
 
  // addInformation('Les truc de notif sont good', $infosHeader);
@@ -33,9 +37,9 @@ if(isset($_POST['login']))
 		$userExist = userExist($_POST['pseudo'], $_POST['pass']);
 		if(!empty($userExist['id_user']))
 		{
-			addValidation("Félicitation vous êtes connecté", $infosHeader);
 			$_SESSION['id_user']    = $userExist['id_user'];
 			$_SESSION['pseudo']     = $userExist['pseudo'];
+			header("Location: index.php?notif=connect");
 		}
 		else
 			addError('Hum, ces identifiants sont faux', $infosHeader);

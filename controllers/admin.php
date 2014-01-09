@@ -40,5 +40,5 @@ if(!empty($_SESSION['id_user']) && $access)//if is admin
 	callView('footer');
 }
 else
-	//header("Location: index.php");
+	header("Location: index.php");
 ?>

@@ -31,11 +31,13 @@
 			<?php 
 			if(!empty($_SESSION['pseudo']))
 			{
-				echo '
-					<ul id="categories_header" class="left">
-						<li><a href="index.php?action=editArticle&statment=new"><span class="icon-compose"></span> Add an article</a></li>
-						<li><a href="index.php?action=admin"><span class="icon-locked"></span> Admin</a></li>
-					</ul>';
+				echo '<ul id="categories_header" class="left">';
+				if($blogger || $admin)
+					echo '<li><a href="index.php?action=editArticle&statment=new"><span class="icon-compose"></span> Add an article</a></li>';
+				if($admin)
+					echo '<li><a href="index.php?action=admin"><span class="icon-locked"></span> Admin</a></li>';
+					
+				echo '</ul>';
 			}
 			?>
 			<nav>

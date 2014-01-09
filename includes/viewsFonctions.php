@@ -13,7 +13,9 @@ $infosHeader = array
 		'valide'      => array(),
 		'error'       => array(),
 		'information' => array()
-	)
+	),
+	'admin' => getUserRank($_SESSION['id_user'], 1),
+	'blogger' => getUserRank($_SESSION['id_user'], 2)
 );
 
 /*
