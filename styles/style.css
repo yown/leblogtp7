@@ -374,9 +374,9 @@ cursor:pointer;
 	color: #7f8c8d;
 	position:relative;
 }
-.owner:hover
+.commentaire p
 {
-	background-color:rgb(246, 246, 246);
+	word-wrap: break-word;
 }
 .comentaire .infos_commentaire
 {

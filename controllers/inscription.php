@@ -20,9 +20,12 @@ if(!empty($_POST))
 
 	if($valid) // if not errors
 	{
-		if(addUser($_POST)) //if user is add in bdd
+		$user = addUser($_POST);
+		if($user != false) //if user is add in bdd
 		{
-			// add user in bdd
+			// user added in db
+			$_SESSION['id_user'] = $user['id_user'];
+			$_SESSION['pseudo']  = $user['pseudo'];
 			header("Location: index.php?notif=inscription");
 			exit;
 		}

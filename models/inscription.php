@@ -71,8 +71,12 @@ function addUser($form)
 	mysqli_stmt_bind_param($result, "sss", $form['pseudo'], $pass, $form['mail']);
 	mysqli_stmt_execute($result);
 
+	$idQuery  = 'SELECT id_user, pseudo FROM users WHERE id_user = (SELECT max(id_user) as id FROM users)';
+	$response = mysqli_query($link, $idQuery);
+	$return   = mysqli_fetch_assoc($response);
+	
 	mysqli_close($link);
-
-	return true;
+	
+	return (empty($return['id'])) ? $return : false;
 }
 ?>
