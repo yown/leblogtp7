@@ -66,11 +66,14 @@ function addUser($form)
 
 	$pass = sha1($form['pass']); // hashage pass
 
-	$query = 'INSERT INTO users (pseudo, pass, mail) value(?,?,?)';
+	$query  = 'INSERT INTO users (pseudo, pass, mail) value(?,?,?)';
 	$result = mysqli_prepare($link, $query);
 	mysqli_stmt_bind_param($result, "sss", $form['pseudo'], $pass, $form['mail']);
-	mysqli_stmt_execute($result);
+	$signUp = mysqli_stmt_execute($result);
 
+	if(empty($signUp))
+		return false;
+	
 	$idQuery  = 'SELECT id_user, pseudo FROM users WHERE id_user = (SELECT max(id_user) as id FROM users)';
 	$response = mysqli_query($link, $idQuery);
 	$return   = mysqli_fetch_assoc($response);
