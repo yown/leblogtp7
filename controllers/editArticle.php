@@ -17,12 +17,17 @@ $dataHome = array(
  /*************************************
  *               Actions		      *     
  *************************************/
+ 
+//#########  IF NOT ALLOWED  #########
+
 //if he (is connected and he is a blogger) or (is connected and admin)
 if(!((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)))
 {
 	header("Location: index.php");
 	exit;
 }
+
+//#########  NEW ARTICLE  #########
 
 // if add an article
 if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
@@ -58,6 +63,8 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 		}
 	}
 }
+
+//#########  EDIT ARTICLE  #########
 
 // if edit article
 if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
@@ -124,6 +131,8 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 		exit;
 	}
 }
+
+//#########  DELETE ARTICLE  #########
 
 // if delete article
 if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))

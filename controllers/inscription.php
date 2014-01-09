@@ -1,5 +1,9 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
+ /*************************************
+ *               SIGNUP 		      *     
+ *************************************/
+
 if(!empty($_POST))
 {
 	$errors = isValid($_POST); // check if form is valid -> return $errors array with errors

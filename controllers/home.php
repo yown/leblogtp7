@@ -2,11 +2,19 @@
 
  // Libs ans Models Automaticly loaded at APPPATH/libs and APPPATH/models if names are the identicals 
 
+ /*************************************
+ *               LOGOUT			      *     
+ *************************************/
+ 
 if(isset($_GET['logout']))
 {
 	$_SESSION['id_user']    = '';
 	$_SESSION['pseudo']     = '';
 }
+ 
+ /*************************************
+ *           NOTIFICATIONS		      *     
+ *************************************/ 
  
 // if notifications
 if(isset($_GET['notif']))
@@ -21,8 +29,9 @@ if(isset($_GET['notif']))
  		addValidation('Votre article a bien été supprimé !', $infosHeader);
 }
 
- // addInformation('Les truc de notif sont good', $infosHeader);
- // addError('on peut même dire qu\'il est pas content', $infosHeader);
+ /*************************************
+ *         		  LOGIN		  	      *     
+ *************************************/
  
 if(isset($_POST['login']))
 {
@@ -43,6 +52,10 @@ if(isset($_POST['login']))
 	}
 }
 
+ /*************************************
+ *         	   PAGINATION		      *     
+ *************************************/
+
 $nbPage = getNbPage();
 $minArticle = 0; 
 if(!empty($_GET['page']))
@@ -59,7 +72,11 @@ $dataHome = array(
 	'nb_pages'        => $nbPage 
 );
  
-// okay appelons la vue
+
+ /*************************************
+ *             LETS BOOT		      *     
+ *************************************/
+ 
 callView('header', $infosHeader);
 callView('home'  , $dataHome); 
 callView('footer');
