@@ -20,30 +20,46 @@ if(isset($_GET['notif']))
  		addValidation('Votre commentaire a bien été ajouté !', $infosHeader);
 }
 
+
+
+
+
 if(isset($_GET['comment']) && !empty($_SESSION['id_user']))
 {
 	if($_GET['comment'] == 'add' && !empty($_POST['content']))
 	{
 		if(addComment($article['id_article'], $_POST['content']))
+		{
 			header("Location: index.php?id=".$article['id_article']."&action=article&notif=addComment");
+			exit;
+		}
 		else
 			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
 	}
-	else if($_GET['comment'] == 'delete' && !empty($_GET['commentId']))
+	else if(!empty($article['isAuthor']) || $_SESSION['rank'] == 1)
 	{
-		//s'il est valide et a lui
-		if(deleteComment($_GET['commentId']))
-			header("Location: index.php?id=".$article['id_article']."&action=article&notif=deleteComment");
-		else
-			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
-	}
-	else if($_GET['comment'] == 'edit' && !empty($_GET['commentId']) && !empty($_POST['content']))
-	{
-		//s'il est valide et a lui
-		if(editComment($_GET['commentId'], $_POST['content']))
-			header("Location: index.php?id=".$article['id_article']."&action=article&notif=editComment");
-		else
-			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+		if($_GET['comment'] == 'delete' && !empty($_GET['commentId']))
+		{
+			//s'il est valide et a lui
+			if(deleteComment($_GET['commentId']))
+			{
+				header("Location: index.php?id=".$article['id_article']."&action=article&notif=deleteComment");
+				exit;
+			}
+			else
+				addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+		}
+		else if($_GET['comment'] == 'edit' && !empty($_GET['commentId']) && !empty($_POST['content']))
+		{
+			//s'il est valide et a lui
+			if(editComment($_GET['commentId'], $_POST['content']))
+			{
+				header("Location: index.php?id=".$article['id_article']."&action=article&notif=editComment");
+				exit;
+			}
+			else
+				addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+		}
 	}
 }
 
