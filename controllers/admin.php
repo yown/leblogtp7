@@ -21,7 +21,10 @@ if(!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)//if is admin
 		if($valid) // if not errors
 		{
 			if(editRank($_POST['id_user'], $_POST['id_rank']))
+			{
 				header("Location: index.php?action=admin&notif=editRank");
+				exit;
+			}
 		}
 	}
 
@@ -29,7 +32,10 @@ if(!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)//if is admin
 	if(isset($_GET['notif']))
 	{
 		if(htmlspecialchars($_GET['notif']) == 'editRank')
-	 		addValidation('Le type de compte a bien été modifié !', $infosHeader);
+		{
+			addValidation('Le type de compte a bien été modifié !', $infosHeader);
+			exit;
+		}
 	}
 
 	callView('header', $infosHeader);
@@ -37,5 +43,8 @@ if(!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)//if is admin
 	callView('footer');
 }
 else
+{
 	header("Location: index.php");
+	exit;
+}
 ?>

@@ -45,7 +45,7 @@ function getRank()
 }
 
 /* ----------------------------------------------
-				get all rank 
+			edit rank for user
 ------------------------------------------------*/
 function editRank($id_user, $id_rank)
 {
