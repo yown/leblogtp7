@@ -37,6 +37,14 @@ if(isset($_GET['comment']) && !empty($_SESSION['id_user']))
 		else
 			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
 	}
+	else if($_GET['comment'] == 'edit' && !empty($_GET['commentId']) && !empty($_POST['content']))
+	{
+		//s'il est valide et a lui
+		if(editComment($_GET['commentId'], $_POST['content']))
+			header("Location: index.php?id=".$article['id_article']."&action=article&notif=deleteComment");
+		else
+			addError("OOppps, cette erreur est normalement impossible", $infosHeader);
+	}
 }
 
 callView('header', $infosHeader);
