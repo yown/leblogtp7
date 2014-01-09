@@ -46,7 +46,7 @@
 					<?php 
 					if(!empty($_SESSION['pseudo']))
 					{
-						echo'
+						echo '
 						<h2>Ajouter un commentaire</h2>
 						<form action="index.php?action=article&comment=add&id='.$article['id_article'].'" method="POST">
 							<p class="center">
@@ -62,25 +62,33 @@
 					<hr>
 					<!-- commentaires -->
 			<?php 
+				$iArticle=1;
 				if(!empty($comments))
 					foreach($comments as $comment)
 					{
 				?>
-						<div class="commentaire <?php if(!empty($comment['isAuthor'])) echo 'owner'; ?>">
-							<div>
+						<div class="commentaire">
+							<div id="iArticle<?php echo $iArticle; ?>">
 								<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
-								<p><?php echo $comment['content'];?></p>
+								<p><?php echo htmlspecialchars($comment['content']);?></p>
+							<?php if(!empty($comment['isAuthor']))
+								echo '
+								<span class="edit_commentaire_article">
+										<a onclick="showEditComment('.$iArticle.');"><span class="icon-compose"></span> Editer</a> 
+										<a href="index.php?action=article&comment=delete&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'"><span class="icon-cross2"></span> Supprimer</a>
+								</span>';
+							?>
 							</div>
 							<?php
 							if(!empty($comment['isAuthor']))
-								echo '<div>
-										<p>
-											<span class="edit_commentaire_article">
-													<a href="index.php?action=article&comment=edit&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'"><span class="icon-compose"></span> Editer</a> 
-													<a href="index.php?action=article&comment=delete&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'"><span class="icon-cross2"></span> Supprimer</a>
-											</span>
-										<p>
-									</div>';
+								echo '
+									<div style="display:none;" id="iArticleEdit'.$iArticle++.'">
+										<form method="POST" action="index.php?action=article&comment=edit&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'">
+											<textarea name="content" class="modifyArticle">'.htmlspecialchars($comment['content']).'</textarea>
+											<br><input type="submit" value="Modifier">
+										</form>
+									</div>
+									';
 							?>
 						</div>
 				<?php
