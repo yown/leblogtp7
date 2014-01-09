@@ -38,7 +38,9 @@ function Loader($name)
 }
 
 //---------------
-
+/*
+* return mysqli link, Connect to database
+*/
 function connect()
 {
 	$link = mysqli_connect("localhost","root","","blackwave") or die("Error ".mysqli_connect_error($link));
@@ -52,7 +54,9 @@ function protectSQL($link, $value, $type = NULL)
 }
 
 //---------------
-
+/*
+* return String, display date or x time ago
+*/
 function toDate($time)
 {
 	$currentTime = time();
@@ -70,14 +74,17 @@ function toDate($time)
 		return 'il y a 1 minute';
 }
 
+/*
+* return String, reduce string if to large
+*/
 function reduceString($string, $size)
 {
     $lastEspace = 0;
     if( strlen($string) > $size )
     {
-      $string = substr($string,0,$size);
+      $string     = substr($string,0,$size);
       $lastEspace = strrpos($string,' ');
-      $string = substr($string,0,$lastEspace).'...';
+      $string     = substr($string,0,$lastEspace).'...';
     }
     return $string;
 }
