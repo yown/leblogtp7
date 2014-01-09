@@ -28,17 +28,14 @@ function isAuthor($id, $id2)
 /* ----------------------------------------------
 				Check user rank
 ------------------------------------------------*/
-function getUserRank($id_user, $rank)
+function rankSession($id_user)
 {
 	$link = connect(); // connexion bdd
 
-	$query = 'SELECT id_rank FROM users WHERE id_user = "'.protectSQL($link, $id_user).'" AND id_rank = "'.protectSQL($link, $rank).'"';
+	$query = 'SELECT id_rank FROM users WHERE id_user = "'.protectSQL($link, $id_user).'"';
 	$value = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);
 		
-	if($result)
-		return true;
-
-	return false;	
+	$_SESSION['rank'] = $result['id_rank'];
 }
 ?>

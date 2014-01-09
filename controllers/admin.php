@@ -1,9 +1,6 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
-// check if id_user is an admin -> return true or false
-$access = getUserRank($_SESSION['id_user'], 1);
-
-if(!empty($_SESSION['id_user']) && $access)//if is admin
+if(!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)//if is admin
 {
 	$dataHome = array(
 		'users' => getUser(),

@@ -57,6 +57,9 @@
  *
  */
 
+if(!empty($_SESSION['id_user']))
+	rankSession($_SESSION['id_user']);
+
  // if controller not defined -> DEFAULTCONTROLLER
 
 	$controllerName = (empty($_GET['action'])) ? DEFAULTCONTROLLER : strtolower($_GET['action']);

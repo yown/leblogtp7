@@ -70,7 +70,7 @@
 						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
 						<?php
 						if(!empty($_SESSION['pseudo']))
-							if(!empty($article['isAuthor'])) 
+							if((!empty($article['isAuthor']) && $_SESSION['rank'] == 2) || $_SESSION['rank'] == 1) 
 							{
 								echo '
 									<span class="edit_commentaire">

@@ -1,6 +1,4 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
-$admin = getUserRank($_SESSION['id_user'], 1);
-$blogger = getUserRank($_SESSION['id_user'], 2);
 
 $dataHome = array(
 	'categories' => getCategories(),
@@ -12,7 +10,7 @@ $dataHome = array(
 	)
 );
 
-if((!empty($_SESSION['id_user']) && $blogger) || (!empty($_SESSION['id_user']) && $admin))
+if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1))
 {
 	// if add an article
 	if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
@@ -56,7 +54,7 @@ if((!empty($_SESSION['id_user']) && $blogger) || (!empty($_SESSION['id_user']) &
 		$idUser_article = $infosArticle['id_user'];
 
 		// if is author -> update
-		if($idUser_article == $_SESSION['id_user'] || $admin) 
+		if($idUser_article == $_SESSION['id_user'] || $_SESSION['rank'] == 1) 
 		{
 
 			$dataHome = array(

@@ -32,9 +32,9 @@
 			if(!empty($_SESSION['pseudo']))
 			{
 				echo '<ul id="categories_header" class="left">';
-				if($blogger || $admin)
+				if($_SESSION['rank'] == 2|| $_SESSION['rank'] == 1)
 					echo '<li><a href="index.php?action=editArticle&statment=new"><span class="icon-compose"></span> Add an article</a></li>';
-				if($admin)
+				if($_SESSION['rank'] == 1)
 					echo '<li><a href="index.php?action=admin"><span class="icon-locked"></span> Admin</a></li>';
 					
 				echo '</ul>';
