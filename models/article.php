@@ -77,7 +77,7 @@ function getSimilar($id_cat, $min = 0, $max = 5)
 			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u
-			  ON a.id_user = u.id_user WHERE a.id_cat = '.intval($id_cat).'
+			  ON a.id_user = u.id_user WHERE a.id_cat = '.intval($id_cat).' AND deleted = 0
 			  ORDER BY `date` DESC, nb_comments
 			  LIMIT '.intval($min).', '.intval($max).'';
 
