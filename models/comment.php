@@ -1,5 +1,8 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
+/* ----------------------------------------------
+				get Comments
+------------------------------------------------*/
 function getComments($id, $min = 0, $nb = 30)
 {
 	$link = connect(); // connexion bdd
@@ -29,6 +32,9 @@ function getComments($id, $min = 0, $nb = 30)
 	return $result;
 }
 
+/* ----------------------------------------------
+				Add comment in bdd
+------------------------------------------------*/
 function addComment($id_article, $content)
 {
 	$link  = connect();
@@ -42,6 +48,9 @@ function addComment($id_article, $content)
 	return $retour;
 }
 
+/* ----------------------------------------------
+			edit comment in bdd
+------------------------------------------------*/
 function editComment($id_comment, $comment)
 {
 	$link   = connect();
@@ -55,6 +64,9 @@ function editComment($id_comment, $comment)
 	return $retour;
 }
 
+/* ----------------------------------------------
+			delete comment in bdd
+------------------------------------------------*/
 function deleteComment($id)
 {
 	$link = connect();
@@ -62,5 +74,4 @@ function deleteComment($id)
 	mysqli_close($link);
 	return $value;
 }
-
 ?>

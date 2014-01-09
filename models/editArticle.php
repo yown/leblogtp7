@@ -1,8 +1,9 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
 
 
-//require_once('model/comment.php');
-
+/* ----------------------------------------------
+			check if form is valid
+------------------------------------------------*/
 function isValid($form, $statment = 'creation')
 {
 
@@ -28,16 +29,16 @@ function isValid($form, $statment = 'creation')
 		{
 			if (isset($_FILES['image']) AND $_FILES['image']['error'] == 0)
 	        {
-	            // Testons si le fichier n'est pas trop gros
+	            // if size is not too big
 	            if ($_FILES['image']['size'] <= 1000000)
 	            {
-	                // Testons si l'extension est autorisée
+	                // if extension is authorized
 	                $infosfichier = pathinfo($_FILES['image']['name']);
 	                $extension_upload = $infosfichier['extension'];
 	                $extensions_autorisees = array('jpg', 'gif', 'jpeg', 'png');
 	                if (in_array($extension_upload, $extensions_autorisees))
 	                {
-	                    // On peut valider le fichier et le stocker définitivement
+	                    // move image on uploads folder
 	                    move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
 	                }
 	                else
@@ -55,6 +56,9 @@ function isValid($form, $statment = 'creation')
 	return $errors;
 }
 
+/* ----------------------------------------------
+				Get all categories
+------------------------------------------------*/
 function getCategories()
 {
 	$link = connect(); // connexion bdd
@@ -66,6 +70,9 @@ function getCategories()
 	return $result;
 }
 
+/* ----------------------------------------------
+				add article in bdd
+------------------------------------------------*/
 function addArticle($data)
 {
 	$link = connect(); // connexion bdd
@@ -83,6 +90,9 @@ function addArticle($data)
 	return $result;
 }
 
+/* ----------------------------------------------
+				get article
+------------------------------------------------*/
 function getArticle($id)
 {
 	$link = connect(); // connexion bdd
@@ -95,6 +105,9 @@ function getArticle($id)
 	return $result;
 }	
 
+/* ----------------------------------------------
+			edit article in bdd
+------------------------------------------------*/
 function editArticle($data)
 {
 	$link = connect();
@@ -118,6 +131,9 @@ function editArticle($data)
 	return $result;
 }
 
+/* ----------------------------------------------
+			delete article in bdd
+------------------------------------------------*/
 function deleteArticle($id_article)
 {
 	$link = connect();

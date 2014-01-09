@@ -113,8 +113,13 @@ if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION
 	// if delete article
 	if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))
 	{
-		deleteArticle(htmlspecialchars($_GET['id_article']));
-		header("Location: index.php?action=home&notif=deleteArticle");
+		if($idUser_article == $_SESSION['id_user'] || $_SESSION['rank'] == 1)
+		{
+			deleteArticle(htmlspecialchars($_GET['id_article']));
+			header("Location: index.php?action=home&notif=deleteArticle");
+		}
+		else
+			header("Location: index.php?action=home");
 	}
 
 	callView('header', $infosHeader);

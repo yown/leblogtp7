@@ -2,6 +2,9 @@
 
 require_once('models/comment.php');
 
+/* ----------------------------------------------
+			check if form is valid
+------------------------------------------------*/
 function isValid($data, $statment = 'creation')
 {
 	if(!is_array($data))
@@ -23,7 +26,9 @@ function isValid($data, $statment = 'creation')
 	return true;
 }
 
-/* Last articles in menu */
+/* ----------------------------------------------
+		get last article for menu
+------------------------------------------------*/
 function getLastArticles($min = 0, $max = 5)
 {
 	$link = connect(); // connexion bdd
@@ -42,7 +47,9 @@ function getLastArticles($min = 0, $max = 5)
 	return $result;
 }
 
-/* ----------  show article and comments ---------- */
+/* ----------------------------------------------
+			show article and comments
+------------------------------------------------*/
 function getArticle($id)
 {
 	$link = connect(); // connexion bdd
@@ -59,7 +66,9 @@ function getArticle($id)
 	return $result;
 }
 
-
+/* ----------------------------------------------
+			get similar article 
+------------------------------------------------*/
 function getSimilar($id_cat, $min = 0, $max = 5)
 {
 	$link = connect(); // connexion bdd
