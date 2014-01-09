@@ -61,11 +61,11 @@ function isValid($form, $statment = 'creation')
 ------------------------------------------------*/
 function getCategories()
 {
-	$link = connect(); // connexion bdd
+	$link    = connect(); // connexion bdd
 
 	$requete = 'SELECT id_cat, name FROM categories ORDER BY name';
-	$query = mysqli_query($link, $requete) or die("Error ".mysqli_error($link));
-	$result = mysqli_fetch_all($query, MYSQLI_ASSOC) or die("Error ".mysqli_error($link));
+	$query   = mysqli_query($link, $requete) or die("Error ".mysqli_error($link));
+	$result  = mysqli_fetch_all($query, MYSQLI_ASSOC) or die("Error ".mysqli_error($link));
 	mysqli_close($link);
 	return $result;
 }
@@ -75,11 +75,11 @@ function getCategories()
 ------------------------------------------------*/
 function addArticle($data)
 {
-	$link = connect(); // connexion bdd
+	$link   = connect(); // connexion bdd
 
 	// add image
 	move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
-	$query = 'INSERT INTO articles (id_user, title, image, content, id_cat, created, updated) value(?,?,?,?,?, NOW(), NOW())';
+	$query  = 'INSERT INTO articles (id_user, title, image, content, id_cat, created, updated) VALUES(? , ?, ?, ?, ?, NOW(), NOW())';
 
 	$result = mysqli_prepare($link, $query);
 	mysqli_stmt_bind_param($result, "sssss", $_SESSION['id_user'], $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat']);
@@ -95,11 +95,15 @@ function addArticle($data)
 ------------------------------------------------*/
 function getArticle($id)
 {
-	$link = connect(); // connexion bdd
+	$link   = connect(); // connexion bdd
 
-	$query = 'SELECT a.id_article, a.id_user, a.title, a.image, a.content, a.id_cat, a.created, u.pseudo FROM articles a INNER JOIN users u ON a.id_user = u.id_user WHERE id_article = '.protectSQL($link, $id);
+	$query  = 'SELECT a.id_article, a.id_user, a.title, a.image, a.content, a.id_cat, a.created, u.pseudo 
+			  FROM articles a 
+			  INNER JOIN users u 
+			  ON a.id_user = u.id_user 
+			  WHERE id_article = '.protectSQL($link, $id);
 
-	$value = mysqli_query($link ,$query);
+	$value  = mysqli_query($link ,$query);
 	$result = mysqli_fetch_assoc($value);
 	mysqli_close($link);
 	return $result;
@@ -113,14 +117,14 @@ function editArticle($data)
 	$link = connect();
 	if(!empty($_FILES['image']['name']))
 	{
-		$query = 'UPDATE articles set title = ?, image = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';
+		$query  = 'UPDATE articles set title = ?, image = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';
 		$result = mysqli_prepare($link, $query);
 		mysqli_stmt_bind_param($result, "sssss", $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat'], $data['id_article']);
 		mysqli_stmt_execute($result);
 	}
 	else
 	{
-		$query = 'UPDATE articles set title = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';	
+		$query  = 'UPDATE articles set title = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';	
 		$result = mysqli_prepare($link, $query);
 		mysqli_stmt_bind_param($result, "ssss", $data['title'], $data['content'], $data['id_cat'], $data['id_article']);
 		mysqli_stmt_execute($result);
@@ -136,8 +140,8 @@ function editArticle($data)
 ------------------------------------------------*/
 function deleteArticle($id_article)
 {
-	$link = connect();
-	$query = 'UPDATE articles set deleted = 1 WHERE id_article = ?';
+	$link   = connect();
+	$query  = 'UPDATE articles set deleted = 1 WHERE id_article = ?';
 
 	$result = mysqli_prepare($link, $query);
 	mysqli_stmt_bind_param($result, "i", $id_article);
