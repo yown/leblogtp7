@@ -5,12 +5,12 @@
  *************************************/
 
 $dataHome = array(
-	'categories' => getCategories(),
-	'article' => array(
-		'id_article' => "",
-		'title' => "",
-		'id_cat' => "",
-		'content' => ""
+	'categories'     => getCategories(),
+	'article'        => array(
+			'id_article' => "",
+			'title'      => "",
+			'id_cat'     => "",
+			'content'    => ""
 	)
 );
 
@@ -30,16 +30,16 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 	if(!empty($_POST))
 	{
 		$dataHome = array(
-			'categories' => getCategories(),
-			'article' => array(
-				'title' => $_POST['title'],
-				'id_cat' => $_POST['id_cat'],
-				'content' => $_POST['content']
-				)
+			'categories'      => getCategories(),
+			'article'         => array(
+					'title'       => $_POST['title'],
+					'id_cat'      => $_POST['id_cat'],
+					'content'     => $_POST['content']
+			)
 		 );
 
 		$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
-		$valid = true;
+		$valid  = true;
 
 		foreach ($errors as $value) 
 		{
@@ -63,7 +63,7 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 {
 
-	$infosArticle = getArticle($_GET['id_article']);
+	$infosArticle   = getArticle($_GET['id_article']);
 	$idUser_article = $infosArticle['id_user'];
 
 	// if is author -> update
@@ -72,40 +72,38 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 
 		$dataHome = array(
 		'categories' => getCategories(),
-		'article' => array(
-			'id_article' => $infosArticle['id_article'],
-			'image' => $infosArticle['image'],
-			'title' => $infosArticle['title'],
-			'id_cat' => $infosArticle['id_cat'],
-			'content' => $infosArticle['content']
+		'article'    => array(
+				'id_article' => $infosArticle['id_article'],
+				'image'      => $infosArticle['image'],
+				'title'      => $infosArticle['title'],
+				'id_cat'     => $infosArticle['id_cat'],
+				'content'    => $infosArticle['content']
 			)
 		);
 
 		if(!empty($_POST))
 		{
 			$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
-			$valid = true;
+			$valid  = true;
 
 			foreach ($errors as $value) 
-			{
 				if(!empty($value)) // if error exist
 				{
 					addError($value, $infosHeader); // insert error message
 					$valid = false;
 				}
-			}
 
 			// new value 
 			$nouv = array(
 				'id_article' => $infosArticle['id_article'],
-				'title' => htmlspecialchars($_POST['title']),
-				'id_cat' => htmlspecialchars($_POST['id_cat']),
-				'content' => $_POST['content']
+				'title'      => htmlspecialchars($_POST['title']),
+				'id_cat'     => htmlspecialchars($_POST['id_cat']),
+				'content'    => $_POST['content']
 			);
 
 			$dataHome = array(
 				'categories' => getCategories(),
-				'article' => $nouv
+				'article'    => $nouv
 			 );
 
 			if($valid) // if not errors
@@ -130,7 +128,7 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 // if delete article
 if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))
 {
-	$infosArticle = getArticle($_GET['id_article']);
+	$infosArticle  = getArticle($_GET['id_article']);
 	$idUser_article = $infosArticle['id_user'];
 
 	if($idUser_article == $_SESSION['id_user'] || $_SESSION['rank'] == 1)
@@ -145,6 +143,10 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'delete'))
 		exit;
 	}
 }
+
+ /*************************************
+ *             LETS BOOT		      *     
+ *************************************/
 
 callView('header', $infosHeader);
 callView('editArticle', $dataHome);

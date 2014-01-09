@@ -3,7 +3,7 @@
 if(!empty($_POST))
 {
 	$errors = isValid($_POST); // check if form is valid -> return $errors array with errors
-	$valid = true;
+	$valid  = true;
 
 	foreach ($errors as $value) 
 	{
@@ -20,6 +20,7 @@ if(!empty($_POST))
 		{
 			// add user in bdd
 			header("Location: index.php?notif=inscription");
+			exit;
 		}
 	}
 }

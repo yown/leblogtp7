@@ -14,9 +14,9 @@ if(empty($article)) // if the article does not match : id does not exist
 
 	// array given to the view
 $dataHome = array(
-	'article' => $article,
+	'article'          => $article,
 	'similar_articles' => getSimilar($article['id_cat'] ,0 , 5), // get "tu va kiffer" selection
-	'comments' => getComments(intval($_GET['id'])) // fetch all comment usable for this article
+	'comments'         => getComments(intval($_GET['id'])) // fetch all comment usable for this article
  );
 
  /*************************************
