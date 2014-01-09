@@ -51,7 +51,7 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<textarea name="content" id="content_input">
+								<textarea name="content" class="tinyMCE" id="content_input">
 									<?php echo $article['content'];?>
 								</textarea>
 							</td>
