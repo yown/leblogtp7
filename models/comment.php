@@ -51,13 +51,13 @@ function addComment($id_article, $content)
 /* ----------------------------------------------
 			edit comment in bdd
 ------------------------------------------------*/
-function editComment($id_comment, $comment)
+function editComment($id_comment, $content)
 {
 	$link   = connect();
-	$query  = 'UPDATE comments SET content = ? WHERE id_comment = ?)';
+	$query  = 'UPDATE comments SET content = ? WHERE id_comment = ?';
 	
 	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "si", $id_comment, $content);
+	mysqli_stmt_bind_param($result, "si", $content, $id_comment);
 	
 	$retour = mysqli_stmt_execute($result);
 	mysqli_close($link);

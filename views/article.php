@@ -71,7 +71,7 @@
 							<div id="iArticle<?php echo $iArticle; ?>">
 								<p class="infos_commentaire"><?php echo $comment['pseudo'];?> <span class="right"><span class="icon-calendar"></span> <?php echo toDate($comment['created']); ?></span></p>
 								<p><?php echo htmlspecialchars($comment['content']);?></p>
-							<?php if(!empty($comment['isAuthor']))
+							<?php if(!empty($comment['isAuthor']) || (!empty($_SESSION['rank']) && $_SESSION['rank'] == 1))
 								echo '
 								<span class="edit_commentaire_article">
 										<a onclick="showEditComment('.$iArticle.');"><span class="icon-compose"></span> Editer</a> 
@@ -80,7 +80,7 @@
 							?>
 							</div>
 							<?php
-							if(!empty($comment['isAuthor']))
+							if(!empty($comment['isAuthor']) || (!empty($_SESSION['rank']) && $_SESSION['rank'] == 1))
 								echo '
 									<div style="display:none;" id="iArticleEdit'.$iArticle++.'">
 										<form method="POST" action="index.php?action=article&comment=edit&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'">
