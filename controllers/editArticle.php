@@ -1,17 +1,19 @@
 <?php if(!defined('APPPATH')) exit('You shouldn\'t have seen this, htaccess removed OR APPATH removed in /index.php');
-$access = getUserRank($_SESSION['id_user'], 1);
-if(!empty($_SESSION['id_user']) || $access)
-{
-	$dataHome = array(
-		'categories' => getCategories(),
-		'article' => array(
-			'id_article' => "",
-			'title' => "",
-			'id_cat' => "",
-			'content' => ""
-			)
-	 );
+$admin = getUserRank($_SESSION['id_user'], 1);
+$blogger = getUserRank($_SESSION['id_user'], 2);
 
+$dataHome = array(
+	'categories' => getCategories(),
+	'article' => array(
+		'id_article' => "",
+		'title' => "",
+		'id_cat' => "",
+		'content' => ""
+	)
+);
+
+if((!empty($_SESSION['id_user']) && $blogger) || (!empty($_SESSION['id_user']) && $admin))
+{
 	// if add an article
 	if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 	{
@@ -49,10 +51,12 @@ if(!empty($_SESSION['id_user']) || $access)
 	// if edit article
 	if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 	{
+
 		$infosArticle = getArticle($_GET['id_article']);
+		$idUser_article = $infosArticle['id_user'];
 
 		// if is author -> update
-		if(isAuthor($_SESSION['id_user'], $infosArticle['id_user'])) 
+		if($idUser_article == $_SESSION['id_user'] || $admin) 
 		{
 
 			$dataHome = array(

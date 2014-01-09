@@ -24,11 +24,6 @@ function isAuthor($id, $id2)
 	return $id == $id2;
 }
 
-function canEdit($id_article, $id_comment = null)
-{
-
-}
-
 
 /* ----------------------------------------------
 				Check user rank
