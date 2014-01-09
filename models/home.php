@@ -13,7 +13,7 @@ function getArticles($min, $nb, $complete = true)
 			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u
-			  ON a.id_user = u.id_user
+			  ON a.id_user = u.id_user WHERE deleted = 0
 			  ORDER BY `date` DESC, nb_comments
 			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $nb).'';
 
@@ -22,7 +22,7 @@ function getArticles($min, $nb, $complete = true)
 			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u
-			  ON a.id_user = u.id_user
+			  ON a.id_user = u.id_user WHERE deleted = 0
 			  ORDER BY `date` DESC, nb_comments
 			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $nb).'';
 
@@ -45,7 +45,7 @@ function getNbPage()
 {
 	$link = connect();
 	
-	$value = mysqli_query($link, "SELECT COUNT(id_article) as 'nombre' FROM articles");
+	$value = mysqli_query($link, "SELECT COUNT(id_article) as 'nombre' FROM articles WHERE deleted = 0");
 	$result = mysqli_fetch_assoc($value);
 	return ($result['nombre'] / NBARTICLEBYPAGE) + 1;
 }

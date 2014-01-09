@@ -137,10 +137,10 @@ function editArticle($data)
 function deleteArticle($id_article)
 {
 	$link = connect();
-	$query = 'DELETE FROM articles WHERE id_article = ?';
+	$query = 'UPDATE articles set deleted = 1 WHERE id_article = ?';
 
 	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "s", $id_article);
+	mysqli_stmt_bind_param($result, "i", $id_article);
 	mysqli_stmt_execute($result);
 
 	mysqli_close($link);

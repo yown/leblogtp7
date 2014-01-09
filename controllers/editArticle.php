@@ -41,6 +41,7 @@ if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION
 				{
 					// add article in bdd
 					header("Location: index.php?notif=newArticle");
+					exit;
 				}
 			}
 		}
@@ -101,13 +102,17 @@ if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION
 					{
 						// add article in bdd
 						header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
+						exit;
 					}
 				}
 			}
 		}
 		// if not author
 		else
+		{
 			header("Location: index.php?action=home");
+			exit;
+		}
 	}
 
 	// if delete article
@@ -115,14 +120,18 @@ if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION
 	{
 		$infosArticle = getArticle($_GET['id_article']);
 		$idUser_article = $infosArticle['id_user'];
-		
+
 		if($idUser_article == $_SESSION['id_user'] || $_SESSION['rank'] == 1)
 		{
 			deleteArticle(htmlspecialchars($_GET['id_article']));
 			header("Location: index.php?action=home&notif=deleteArticle");
+			exit;
 		}
 		else
+		{
 			header("Location: index.php?action=home");
+			exit;
+		}
 	}
 
 	callView('header', $infosHeader);
@@ -130,5 +139,8 @@ if((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSION
 	callView('footer');
 }
 else
+{
 	header("Location: index.php");
+	exit;
+}
 ?>
