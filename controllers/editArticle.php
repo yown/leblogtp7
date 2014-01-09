@@ -29,6 +29,9 @@ if(!((!empty($_SESSION['id_user']) && $_SESSION['rank'] == 2) || (!empty($_SESSI
 
 //#########  NEW ARTICLE  #########
 
+// timestamp for new image name
+$time = time();
+
 // if add an article
 if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 {
@@ -54,7 +57,7 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'new'))
 
 		if($valid) // if not errors
 		{
-			if(addArticle($_POST))
+			if(addArticle($_POST, $time))
 			{
 				// add article in bdd
 				header("Location: index.php?notif=newArticle");
@@ -115,11 +118,11 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 
 			if($valid) // if not errors
 			{
-				if(editArticle($_POST))
+				if(editArticle($_POST, $time))
 				{
 					// add article in bdd
-					header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
-					exit;
+					//header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
+					//exit;
 				}
 			}
 		}

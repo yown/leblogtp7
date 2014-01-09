@@ -34,7 +34,6 @@ if(!empty($_SESSION['id_user']) && $_SESSION['rank'] == 1)//if is admin
 		if(htmlspecialchars($_GET['notif']) == 'editRank')
 		{
 			addValidation('Le type de compte a bien été modifié !', $infosHeader);
-			exit;
 		}
 	}
 

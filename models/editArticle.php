@@ -37,10 +37,8 @@ function isValid($form, $statment = 'creation')
 	                $extension_upload = $infosfichier['extension'];
 	                $extensions_autorisees = array('jpg', 'gif', 'jpeg', 'png');
 	                if (in_array($extension_upload, $extensions_autorisees))
-	                {
-	                    // move image on uploads folder
-	                    move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
-	                }
+	                	return $errors;
+
 	                else
 	                $errors[] = 'L\'extention de votre image n\'est pas autorisée. (Seulement jpeg, jpg, png)';
 	        	}
@@ -73,16 +71,19 @@ function getCategories()
 /* ----------------------------------------------
 				add article in bdd
 ------------------------------------------------*/
-function addArticle($data)
+function addArticle($data, $time)
 {
 	$link   = connect(); // connexion bdd
 
+	//change name of image
+	$new_name = $time .'-'.$_FILES['image']['name'];
+
 	// add image
-	move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($_FILES['image']['name']));
+	move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($new_name));
 	$query  = 'INSERT INTO articles (id_user, title, image, content, id_cat, created, updated) VALUES(? , ?, ?, ?, ?, NOW(), NOW())';
 
 	$result = mysqli_prepare($link, $query);
-	mysqli_stmt_bind_param($result, "sssss", $_SESSION['id_user'], $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat']);
+	mysqli_stmt_bind_param($result, "sssss", $_SESSION['id_user'], $data['title'], $new_name, $data['content'], $data['id_cat']);
 	mysqli_stmt_execute($result);
 
 	mysqli_close($link);
@@ -112,14 +113,19 @@ function getArticle($id)
 /* ----------------------------------------------
 			edit article in bdd
 ------------------------------------------------*/
-function editArticle($data)
+function editArticle($data, $time)
 {
 	$link = connect();
 	if(!empty($_FILES['image']['name']))
 	{
+		//change name of image
+		$new_name = $time .'-'.$_FILES['image']['name'];
+		//add image in uploads
+		move_uploaded_file($_FILES['image']['tmp_name'], 'images/uploads/' . basename($new_name));
+
 		$query  = 'UPDATE articles set title = ?, image = ?, content = ?, id_cat = ?, updated = NOW() WHERE id_article = ?';
 		$result = mysqli_prepare($link, $query);
-		mysqli_stmt_bind_param($result, "sssss", $data['title'], $_FILES['image']['name'], $data['content'], $data['id_cat'], $data['id_article']);
+		mysqli_stmt_bind_param($result, "sssss", $data['title'], $new_name, $data['content'], $data['id_cat'], $data['id_article']);
 		mysqli_stmt_execute($result);
 	}
 	else
