@@ -13,7 +13,7 @@
 						<?php 
 						foreach ($users as $user) 
 						{
-							if(isset($_POST) && ($_POST['id_user'] == $user['id_user']))
+							if(!empty($_POST) && ($_POST['id_user'] == $user['id_user']))
 								echo '<option value="'.$user['id_user'].'" selected>'.$user['pseudo'].'</option>';
 							else
 								echo '<option value="'.$user['id_user'].'">'.$user['pseudo'].'</option>';
@@ -27,7 +27,7 @@
 						<?php 
 						foreach ($ranks as $rank) 
 						{
-							if(isset($_POST) && ($_POST['id_rank'] == $rank['id_rank']))
+							if(!empty($_POST) && ($_POST['id_rank'] == $rank['id_rank']))
 								echo '<option value="'.$rank['id_rank'].'" selected>'.$rank['name'].'</option>';
 							else
 								echo '<option value="'.$rank['id_rank'].'">'.$rank['name'].'</option>';

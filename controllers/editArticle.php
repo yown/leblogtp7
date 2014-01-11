@@ -121,8 +121,8 @@ if(isset($_GET['statment']) && ($_GET['statment'] == 'edit'))
 				if(editArticle($_POST, $time))
 				{
 					// add article in bdd
-					//header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
-					//exit;
+					header("Location: index.php?action=article&id=".$_POST['id_article']."&notif=editArticle");
+					exit;
 				}
 			}
 		}

@@ -12,7 +12,7 @@
 				foreach($recent_articles as $recent_article) // for every articles
 				{
 				?>
-					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $recent_article['id']; ?>'">
+					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&amp;id=<?php echo $recent_article['id']; ?>'">
 						<div class="image_apercus left">
 							<img src="images/uploads/<?php echo $recent_article['image'];?>" alt="<?php echo $recent_article['title'] ?>">
 						</div>
@@ -36,7 +36,7 @@
 			<article class="article">
 				<!-- image article -->
 				<div class="bloc_image_article">
-					<a href="index.php?action=article&id=<?php echo $article['id']; ?>">
+					<a href="index.php?action=article&amp;id=<?php echo $article['id']; ?>">
 						<img src="images/uploads/<?php echo $article['image']; ?>" alt="<?php echo reduceString($article['title'], 50); ?>">
 					</a>
 				</div>
@@ -46,8 +46,8 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['author']; ?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
 					</p>
-					<h1><a href="index.php?action=article&id=<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h1>
-					<p><?php echo reduceString($article['content'], 200); ?></p>
+					<h1><a href="index.php?action=article&amp;id=<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h1>
+					<?php echo reduceString($article['content'], 200); ?>
 					<hr>
 					<!-- commentaires -->
 			<?php 
@@ -67,15 +67,15 @@
 					<hr>
 					<!-- boutons commentaire -->
 					<p>
-						<a href="index.php?action=article&id=<?php echo $article['id']; ?>">Voir plus</a>
+						<a href="index.php?action=article&amp;id=<?php echo $article['id']; ?>">Voir plus</a>
 						<?php
 						if(!empty($_SESSION['pseudo']))
 							if((!empty($article['isAuthor']) && $_SESSION['rank'] == 2) || $_SESSION['rank'] == 1) 
 							{
 								echo '
 									<span class="edit_commentaire">
-										<a href="index.php?action=editArticle&statment=edit&id_article='.$article['id'].'"><span class="icon-compose"></span> Editer</a> 
-										<a href="index.php?action=editArticle&statment=delete&id_article='.$article['id'].'"><span class="icon-cross2"></span> Supprimer</a>
+										<a href="index.php?action=editArticle&amp;statment=edit&amp;id_article='.$article['id'].'"><span class="icon-compose"></span> Editer</a> 
+										<a href="index.php?action=editArticle&amp;statment=delete&amp;id_article='.$article['id'].'"><span class="icon-cross2"></span> Supprimer</a>
 									</span>';
 							}
 						?>

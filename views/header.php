@@ -33,7 +33,7 @@
 			{
 				echo '<ul id="categories_header" class="left">';
 				if($_SESSION['rank'] == 2|| $_SESSION['rank'] == 1)
-					echo '<li><a href="index.php?action=editArticle&statment=new"><span class="icon-compose"></span> Add an article</a></li>';
+					echo '<li><a href="index.php?action=editArticle&amp;statment=new"><span class="icon-compose"></span> Add an article</a></li>';
 				if($_SESSION['rank'] == 1)
 					echo '<li><a href="index.php?action=admin"><span class="icon-locked"></span> Admin</a></li>';
 					
@@ -69,7 +69,7 @@
 							</ul>
 						</li>';
 				else
-					echo $_SESSION['pseudo'].' <li><a href="index.php?logout">Déconnexion</a></li>';
+					echo '<li><span class="pseudo_menu">'.$_SESSION['pseudo'].'</span> <a href="index.php?logout">Déconnexion</a></li>';
 				?>
 				</ul>
 			</nav>

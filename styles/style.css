@@ -191,6 +191,13 @@ a:hover
 	color: #ecf0f1;
 }
 
+/* pseudo dans le barre de menu */
+.pseudo_menu
+{
+	margin-right: 20px;
+}
+
+
 
 /* ----------------------------------------- 
 			MENU GAUCHE

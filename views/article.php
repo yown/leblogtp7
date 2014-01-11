@@ -10,7 +10,7 @@
 				foreach($similar_articles as $similar_article) // for every articles
 				{
 				?>
-					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&id=<?php echo $similar_article['id']; ?>'">
+					<div class="apercus_article_menu_gauche" onclick="window.location.href='index.php?action=article&amp;id=<?php echo $similar_article['id']; ?>'">
 						<div class="image_apercus left">
 							<img src="images/uploads/<?php echo $similar_article['image'];?>" alt="<?php echo $similar_article['title'];?>">
 						</div>
@@ -39,7 +39,8 @@
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
 					<h1><?php echo $article['title'];?></h1>
-					<p class="article_content"><?php echo $article['content'];?></p>
+					<?php echo $article['content'];?>
+					<br>
 					<hr>
 
 					<!-- Ajout commentaires -->
@@ -48,7 +49,7 @@
 					{
 						echo '
 						<h2>Ajouter un commentaire</h2>
-						<form action="index.php?action=article&comment=add&id='.$article['id_article'].'" method="POST">
+						<form action="index.php?action=article&amp;comment=add&amp;id='.$article['id_article'].'" method="POST">
 							<p class="center">
 								<textarea name="content" id="addCom" placeholder="Votre commentaire"></textarea>
 								<input type="submit" value="Poster">
@@ -75,7 +76,7 @@
 								echo '
 								<span class="edit_commentaire_article">
 										<a onclick="showEditComment('.$iArticle.');"><span class="icon-compose"></span> Editer</a> 
-										<a href="index.php?action=article&comment=delete&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'"><span class="icon-cross2"></span> Supprimer</a>
+										<a href="index.php?action=article&amp;comment=delete&amp;id='.htmlspecialchars($_GET['id']).'&amp;commentId='.$comment['id_comment'].'"><span class="icon-cross2"></span> Supprimer</a>
 								</span>';
 							?>
 							</div>
@@ -83,7 +84,7 @@
 							if(!empty($comment['isAuthor']) || (!empty($_SESSION['rank']) && $_SESSION['rank'] == 1))
 								echo '
 									<div style="display:none;" id="iArticleEdit'.$iArticle++.'">
-										<form method="POST" action="index.php?action=article&comment=edit&id='.htmlspecialchars($_GET['id']).'&commentId='.$comment['id_comment'].'">
+										<form method="POST" action="index.php?action=article&amp;comment=edit&amp;id='.htmlspecialchars($_GET['id']).'&amp;commentId='.$comment['id_comment'].'">
 											<textarea name="content" class="modifyArticle">'.htmlspecialchars($comment['content']).'</textarea>
 											<br><input type="submit" value="Modifier">
 										</form>
@@ -103,8 +104,8 @@
 							<!-- boutons commentaire -->
 							<p>
 								<span class="edit_commentaire_article">
-										<a href="index.php?action=editArticle&statment=edit&id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-compose"></span> Editer</a> 
-										<a href="index.php?action=editArticle&statment=delete&id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-cross2"></span> Supprimer</a>
+										<a href="index.php?action=editArticle&amp;statment=edit&amp;id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-compose"></span> Editer</a> 
+										<a href="index.php?action=editArticle&amp;statment=delete&amp;id_article='.htmlspecialchars($_GET['id']).'"><span class="icon-cross2"></span> Supprimer</a>
 								</span>
 							<p>';
 						}
