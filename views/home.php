@@ -79,7 +79,7 @@
 									</span>';
 							}
 						?>
-						<a class="right" href="#"><span class="icon-comments"></span> <?php echo $article['nb_comments']; ?></a>
+						<a class="right" href="index.php?action=article&amp;id=<?php echo $article['id']; ?>#go_comment"><span class="icon-comments"></span> <?php echo $article['nb_comments']; ?></a>
 					</p>
 				</div>
 			</article>
