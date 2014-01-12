@@ -57,7 +57,8 @@
 							</td>
 						</tr>
 					</table>
-					<?php if(isset($article))
+					<?php 
+					if(!empty($article['id_article']))
 						echo '<input type="hidden" name="id_article" value="'.$article['id_article'].'">';
 
 					if(htmlspecialchars($_GET['statment']) == "new")
