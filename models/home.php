@@ -11,7 +11,7 @@ function getArticles($min, $nb, $complete = true)
 
 	// if logged
 	if(empty($_SESSION['id_user']))
-		$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, a.content,
+		$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.updated as edit, a.title, a.content,
 			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u
@@ -19,7 +19,7 @@ function getArticles($min, $nb, $complete = true)
 			  ORDER BY `date` DESC, nb_comments
 			  LIMIT '.protectSQL($link, $min).', '.protectSQL($link, $nb).'';
 	else
-		$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.title, a.content,IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\',
+		$query = 'SELECT a.id_article as id, a.image, u.pseudo as author, a.created as `date`, a.updated as edit, a.title, a.content,IF(u.id_user = '.intval($_SESSION['id_user']).', 1, 0) as \'isAuthor\',
 			  (SELECT count(id) FROM comments WHERE id_article = a.id_article)as nb_comments
 			  FROM articles a
 			  JOIN users u

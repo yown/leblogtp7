@@ -39,6 +39,14 @@
 						<span class="icon-calendar"></span> <?php echo toDate($article['created']); ?>
 					</p>
 					<h1><?php echo $article['title'];?></h1>
+					<?php if($article['edit'] != $article['created'])
+					{
+						echo'
+						<p class="small right both">
+							<span class="icon-compose"></span>
+							'.toDate($article['edit']).'
+						</p>';
+					}?>
 					<?php echo $article['content'];?>
 					<br>
 					<hr>

@@ -46,6 +46,14 @@
 						<a href="#"><span class="icon-users"></span> <?php echo $article['author']; ?></a> - 
 						<span class="icon-calendar"></span> <?php echo toDate($article['date']); ?>
 					</p>
+					<?php if($article['edit'] != $article['date'])
+					{
+						echo'
+						<p class="small right both">
+							<span class="icon-compose"></span>
+							'.toDate($article['edit']).'
+						</p>';
+					}?>
 					<h1><a href="index.php?action=article&amp;id=<?php echo $article['id']; ?>"><?php echo $article['title']; ?></a></h1>
 					<?php echo reduceString($article['content'], 200); ?>
 					<hr>

@@ -60,6 +60,12 @@ a:hover
 	font-weight: normal;
 	font-family: 'Open Sans Condensed', sans-serif;
 }
+
+.both
+{
+	clear: both;
+}
+
 /* ------- infobulles --------- */
 .infobulle
 {
@@ -323,6 +329,11 @@ a:hover
 {
 	width: 90%;
 	margin: auto;
+}
+
+.bloc_infos_article
+{
+	margin-bottom: 2px;
 }
 
 .article h1
